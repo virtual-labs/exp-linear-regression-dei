@@ -109,6 +109,9 @@
           	<a href="performance-report.html" class="my-2 mx-3" target="_blank">
           		<button class="v-button">Performance Tool</button>
           	</a>
+          	<a href="validator-report.html" class="my-2 mx-3" target="_blank">
+          		<button class="v-button">Validation Tool</button>
+          	</a>
           </div>
           </div>
         </div>
@@ -351,9 +354,9 @@
               <h2 id="linear-regression">Linear Regression</h2>
           
             </div>
-              <h3 id="theory">Theory</h3>
-          <p>Linear Regression is a supervised machine learning algorithm used to model the relationship between a dependent (target) variable and one or more independent (feature) variables by fitting a linear equation to observed data. The objective is to predict continuous numerical outcomes.</p>
-          <p><strong>Simple Linear Regression:</strong> involves a single independent variable and is mathematically expressed as:</p>
+              <p>Linear Regression is a supervised machine learning algorithm used to model the relationship between a dependent (target) variable and one or more independent (feature) variables by fitting a linear equation to observed data. The objective is to predict continuous numerical outcomes.</p>
+          <h4 id="1-simple-linear-regression">1. Simple Linear Regression</h4>
+          <p>Simple Linear Regression involves a single independent variable and is mathematically expressed as:</p>
           <div style="text-align: center; margin: 15px 0;">
           <span style="display: inline-block; padding: 10px 20px; border: 1px solid #ccc; background-color: #f9f9f9; font-style: italic;">Y = β₀ + β₁X + ε</span>
           </div>
@@ -362,7 +365,8 @@
           <img src="images/linear-regression.png" alt="Linear Regression" style="max-height: 300px; width: auto;">
           </div>
           
-          <p><strong>Multiple Linear Regression:</strong> involves two or more independent variables and is expressed as:</p>
+          <h4 id="2-multiple-linear-regression">2. Multiple Linear Regression</h4>
+          <p>Multiple Linear Regression involves two or more independent variables and is expressed as:</p>
           <div style="text-align: center; margin: 15px 0;">
           <span style="display: inline-block; padding: 10px 20px; border: 1px solid #ccc; background-color: #f9f9f9; font-style: italic;">Y = β₀ + β₁X₁ + β₂X₂ + ⋯ + βₙXₙ + ε</span>
           </div>
@@ -375,21 +379,21 @@
           <li><strong>β₁, β₂, …, βₙ:</strong> Regression coefficients</li>
           <li><strong>ε:</strong> Error term (residual)</li>
           </ul>
-          <h4 id="method-of-least-squares">Method of Least Squares</h4>
+          <h4 id="3-method-of-least-squares">3. Method of Least Squares</h4>
           <p>The coefficients of the regression model are estimated using the Least Squares Method, which minimizes the Residual Sum of Squares (RSS)—the sum of squared differences between observed and predicted values.</p>
-          <h4 id="assumptions-of-linear-regression">Assumptions of Linear Regression</h4>
+          <h4 id="4-assumptions-of-linear-regression">4. Assumptions of Linear Regression</h4>
           <ul>
           <li><strong>Linearity</strong> – The relationship between independent and dependent variables is linear.</li>
           <li><strong>Independence</strong> – Observations are independent of each other.</li>
           <li><strong>Homoscedasticity</strong> – Constant variance of residuals across all values of X.</li>
           <li><strong>Normality</strong> – Residuals are normally distributed.</li>
           </ul>
-          <h4 id="merits-of-linear-regression">Merits of Linear Regression</h4>
+          <h4 id="5-merits-of-linear-regression">5. Merits of Linear Regression</h4>
           <ul>
           <li><strong>Simplicity and Interpretability:</strong> Linear Regression is easy to understand and implement. Model coefficients have clear statistical meaning, indicating the magnitude and direction of feature influence on the target variable.</li>
           <li><strong>Effective for Linearly Related Data:</strong> Performs well when the true relationship between features and target is approximately linear and assumptions are reasonably satisfied.</li>
           </ul>
-          <h4 id="demerits-of-linear-regression">Demerits of Linear Regression</h4>
+          <h4 id="6-demerits-of-linear-regression">6. Demerits of Linear Regression</h4>
           <ul>
           <li><strong>Linearity Assumption:</strong> The model cannot capture non-linear relationships unless manual feature transformations (e.g., polynomial terms) are applied.</li>
           <li><strong>Sensitivity to Outliers:</strong> Least Squares estimation squares residuals, giving excessive weight to outliers, which can significantly distort the model.</li>
