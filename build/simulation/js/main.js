@@ -17,7 +17,7 @@ import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-print("Libraries Imported");`,
+print("Libraries Imported")`,
         output: `<div class="output-success">Libraries Imported</div>`
       }
     ]
@@ -379,12 +379,14 @@ data`,
     blocks: [
       {
         code: `<div class="output-success"># Create feature matrix X by dropping Car_Name and Selling_Price columns</div>
-X = data.drop(['Car_Name','Selling_Price'], axis=1)`,
+X = data.drop(['Car_Name','Selling_Price'], axis=1)
+print("Feature matrix X created by dropping 'Car_Name' and 'Selling_Price' columns.")`,
         output: `<div class="output-success">Feature matrix X created by dropping 'Car_Name' and 'Selling_Price' columns.</div>`
       },
       {
         code: `<div class="output-success"># Create target vector Y containing the Selling_Price column</div>
-Y = data['Selling_Price']`,
+Y = data['Selling_Price']
+print("Target vector Y created from 'Selling_Price' column.")`,
         output: `<div class="output-success">Target vector Y created from 'Selling_Price' column.</div>`
       },
       {
@@ -451,7 +453,8 @@ print("Model Trained Successfully")`,
       {
         code: `<div class="output-success"># Generate predictions for training and testing datasets using the trained model</div>
 Y_train_pred = model.predict(X_train)
-Y_test_pred = model.predict(X_test)`,
+Y_test_pred = model.predict(X_test)
+print("Predictions generated for both Train and Test sets.")`,
         output: `<div class="output-success">Predictions generated for both Train and Test sets.</div>`
       },
       {
@@ -527,7 +530,8 @@ plt.show()`,
       },
       {
         code: `<div class="output-success"># Choose one random test sample from the dataset to compare the actual and predicted selling prices.</div>
-# Select a row from the table below
+test_samples = data.sample(n=5, random_state=42)
+display(test_samples)
 print("Interactive Prediction Table Loaded")`,
         output: `<div class="output-success">Interactive Prediction Table Loaded</div>
 <div id="randomPredContainer" style="font-family:sans-serif; padding:10px;">
@@ -746,7 +750,8 @@ data`,
     blocks: [
       {
         code: `<div class="output-success"># Create feature matrix X and target vector Y</div>
-X = data.drop(['Salary'], axis=1)`,
+X = data.drop(['Salary'], axis=1)
+print("Feature matrix X created.")`,
         output: `<div class="output-success">Feature matrix X created.</div>`
       },
       {
@@ -770,7 +775,8 @@ X.head()`,
       },
       {
         code: `<div class="output-success"># Create target vector Y</div>
-Y = data['Salary']`,
+Y = data['Salary']
+print("Target vector Y created.")`,
         output: `<div class="output-success">Target vector Y created.</div>`
       },
       {
@@ -803,7 +809,8 @@ print("Model Trained")`,
       {
         code: `<div class="output-success"># Generate predictions for training and testing datasets using the trained model</div>
 Y_train_pred = model.predict(X_train)
-Y_test_pred = model.predict(X_test)`,
+Y_test_pred = model.predict(X_test)
+print("Predictions generated for both Train and Test sets.")`,
         output: `<div class="output-success">Predictions generated for both Train and Test sets.</div>`
       },
       {
@@ -1233,12 +1240,48 @@ function restartExperiment() {
 }
 
 function highlightCode(code) {
-  return code
-    .replace(/import /g, '<span class="kw">import </span>')
-    .replace(/from /g, '<span class="kw">from </span>')
-    .replace(/print/g, '<span class="func">print</span>')
-    .replace(/def /g, '<span class="kw">def </span>')
-    .replace(/return /g, '<span class="kw">return </span>');
+  // Only highlight keywords that are not inside strings
+  // Split by strings first, then apply highlighting only to non-string parts
+  let result = '';
+  let inString = false;
+  let stringChar = '';
+  let i = 0;
+  let currentPart = '';
+  
+  while (i < code.length) {
+    const char = code[i];
+    
+    if (!inString && (char === '"' || char === "'")) {
+      // Apply highlighting to current part before string
+      result += currentPart
+        .replace(/\bimport /g, '<span class="kw">import </span>')
+        .replace(/\bdef /g, '<span class="kw">def </span>')
+        .replace(/\breturn /g, '<span class="kw">return </span>')
+        .replace(/\bprint\b/g, '<span class="func">print</span>');
+      currentPart = '';
+      inString = true;
+      stringChar = char;
+      result += char;
+    } else if (inString && char === stringChar) {
+      result += char;
+      inString = false;
+      stringChar = '';
+    } else if (inString) {
+      result += char;
+    } else {
+      currentPart += char;
+    }
+    i++;
+  }
+  
+  // Apply highlighting to remaining part
+  result += currentPart
+    .replace(/\bimport /g, '<span class="kw">import </span>')
+    .replace(/\bdef /g, '<span class="kw">def </span>')
+    .replace(/\breturn /g, '<span class="kw">return </span>')
+    .replace(/\bprint\b/g, '<span class="func">print</span>');
+  
+  return result;
 }
 
 // Global scope for HTML callbacks

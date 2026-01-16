@@ -1,5 +1,3 @@
-### Procedure
-
 #### Part 1: Simple Linear Regression
 
 The objective of this experiment is to implement Simple Linear Regression on Salary Dataset to regress Salaries with corresponding Years of Experience.

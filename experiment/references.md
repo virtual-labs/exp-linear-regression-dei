@@ -4,4 +4,4 @@
 
 2. M. Pradhan and U. Dinesh (2019). *Machine Learning Using Python*. Wiley.
 
-3. Scikit-learn Developers. [Linear Models Documentation](https://scikit-learn.org/stable/modules/linear_model.html).
+3. Scikit-learn Developers. Linear Models Documentation.
