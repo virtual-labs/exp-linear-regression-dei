@@ -349,434 +349,434 @@
                         </div>
                     </div>
                 </div>
-          </div>          <div class="vlabs-page-content px-5 pb-4 flex-grow-1 markdown-body">
-            <div class="text-center fix-spacing">
-              <h2 id="linear-regression">Linear Regression</h2>
+          </div>            <div class="vlabs-page-content px-5 pb-4 flex-grow-1 markdown-body">
+              <div class="text-center fix-spacing">
+                <h2 id="linear-regression">Linear Regression</h2>
           
+              </div>
+              <div id="difficulty-container" style="border-bottom: 1px solid #eaecef; padding-bottom: .3em; margin: 0" class="row">
+                <div id="difficulty-label" class="col-12 col-md-3" style="display:none"><strong>Choose difficulty: </strong></div>
+                <div class="form-check col-12 col-md-3" style="display:none">
+                  <input id="beginner" type="checkbox" value="">
+                  <label class="form-check-label" for="beginner">
+                    <strong>Beginner</strong>
+                  </label>
+                </div>
+                <div class="form-check col-12 col-md-3" style="display:none">
+                  <input id="intermediate" type="checkbox" value="">
+                  <label class="form-check-label" for="intermediate">
+                    <strong>Intermediate</strong>
+                  </label>
+                </div>
+                <div class="form-check col-12 col-md-3" style="display:none">
+                  <input id="advanced" type="checkbox" value="">
+                  <label class="form-check-label" for="advanced">
+                    <strong>Advanced</strong>
+                  </label>
+                </div>
+              </div>
+          
+              <div id="quiz" class="versiontrue" style="margin-top: 1rem">
+          
+          
+                <div class="question beginner">
+                  What type of problem does Linear Regression solve?
+                </div>
+          
+                <div class="answers">
+                  <div id="answer0a">
+                    <label>
+                      <input type="radio" name="question0" value="a">
+                      a: Classification
+                    </label>
+                    <a href="#" id="explanation0a" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer0b">
+                    <label>
+                      <input type="radio" name="question0" value="b">
+                      b: Regression
+                    </label>
+                    <a href="#" id="explanation0b" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer0c">
+                    <label>
+                      <input type="radio" name="question0" value="c">
+                      c: Clustering
+                    </label>
+                    <a href="#" id="explanation0c" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer0d">
+                    <label>
+                      <input type="radio" name="question0" value="d">
+                      d: Dimensionality Reduction
+                    </label>
+                    <a href="#" id="explanation0d" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                </div>
+          
+                <div class="question beginner">
+                  In the equation Y = β₀ + β₁X, what represents the intercept?
+                </div>
+          
+                <div class="answers">
+                  <div id="answer1a">
+                    <label>
+                      <input type="radio" name="question1" value="a">
+                      a: Y
+                    </label>
+                    <a href="#" id="explanation1a" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer1b">
+                    <label>
+                      <input type="radio" name="question1" value="b">
+                      b: β₁
+                    </label>
+                    <a href="#" id="explanation1b" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer1c">
+                    <label>
+                      <input type="radio" name="question1" value="c">
+                      c: X
+                    </label>
+                    <a href="#" id="explanation1c" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer1d">
+                    <label>
+                      <input type="radio" name="question1" value="d">
+                      d: β₀
+                    </label>
+                    <a href="#" id="explanation1d" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                </div>
+          
+                <div class="question intermediate">
+                  Which metric measures the average squared difference between actual and predicted values?
+                </div>
+          
+                <div class="answers">
+                  <div id="answer2a">
+                    <label>
+                      <input type="radio" name="question2" value="a">
+                      a: MAE
+                    </label>
+                    <a href="#" id="explanation2a" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer2b">
+                    <label>
+                      <input type="radio" name="question2" value="b">
+                      b: RMSE
+                    </label>
+                    <a href="#" id="explanation2b" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer2c">
+                    <label>
+                      <input type="radio" name="question2" value="c">
+                      c: MSE
+                    </label>
+                    <a href="#" id="explanation2c" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer2d">
+                    <label>
+                      <input type="radio" name="question2" value="d">
+                      d: R²
+                    </label>
+                    <a href="#" id="explanation2d" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                </div>
+          
+                <div class="question intermediate">
+                  What is the range of the R² score?
+                </div>
+          
+                <div class="answers">
+                  <div id="answer3a">
+                    <label>
+                      <input type="radio" name="question3" value="a">
+                      a: 0 to 1 (usually)
+                    </label>
+                    <a href="#" id="explanation3a" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer3b">
+                    <label>
+                      <input type="radio" name="question3" value="b">
+                      b: −1 to 1
+                    </label>
+                    <a href="#" id="explanation3b" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer3c">
+                    <label>
+                      <input type="radio" name="question3" value="c">
+                      c: 0 to infinity
+                    </label>
+                    <a href="#" id="explanation3c" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer3d">
+                    <label>
+                      <input type="radio" name="question3" value="d">
+                      d: −infinity to 1
+                    </label>
+                    <a href="#" id="explanation3d" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                </div>
+          
+                <div class="question beginner">
+                  Which library in Python is commonly used for implementing Linear Regression models?
+                </div>
+          
+                <div class="answers">
+                  <div id="answer4a">
+                    <label>
+                      <input type="radio" name="question4" value="a">
+                      a: NumPy
+                    </label>
+                    <a href="#" id="explanation4a" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer4b">
+                    <label>
+                      <input type="radio" name="question4" value="b">
+                      b: Pandas
+                    </label>
+                    <a href="#" id="explanation4b" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer4c">
+                    <label>
+                      <input type="radio" name="question4" value="c">
+                      c: Scikit-learn
+                    </label>
+                    <a href="#" id="explanation4c" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer4d">
+                    <label>
+                      <input type="radio" name="question4" value="d">
+                      d: Matplotlib
+                    </label>
+                    <a href="#" id="explanation4d" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                </div>
+          
+                <div class="question beginner">
+                  Prior to training, why do we split data into training and testing sets?
+                </div>
+          
+                <div class="answers">
+                  <div id="answer5a">
+                    <label>
+                      <input type="radio" name="question5" value="a">
+                      a: To make the dataset smaller
+                    </label>
+                    <a href="#" id="explanation5a" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer5b">
+                    <label>
+                      <input type="radio" name="question5" value="b">
+                      b: To evaluate model performance on unseen data
+                    </label>
+                    <a href="#" id="explanation5b" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer5c">
+                    <label>
+                      <input type="radio" name="question5" value="c">
+                      c: To remove outliers
+                    </label>
+                    <a href="#" id="explanation5c" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer5d">
+                    <label>
+                      <input type="radio" name="question5" value="d">
+                      d: To balance the classes
+                    </label>
+                    <a href="#" id="explanation5d" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                </div>
+          
+                <div class="question intermediate">
+                  What must be done to categorical variables before using them in Linear Regression?
+                </div>
+          
+                <div class="answers">
+                  <div id="answer6a">
+                    <label>
+                      <input type="radio" name="question6" value="a">
+                      a: Remove them
+                    </label>
+                    <a href="#" id="explanation6a" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer6b">
+                    <label>
+                      <input type="radio" name="question6" value="b">
+                      b: Normalize them
+                    </label>
+                    <a href="#" id="explanation6b" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer6c">
+                    <label>
+                      <input type="radio" name="question6" value="c">
+                      c: Encode them into numbers
+                    </label>
+                    <a href="#" id="explanation6c" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer6d">
+                    <label>
+                      <input type="radio" name="question6" value="d">
+                      d: Leave them as text
+                    </label>
+                    <a href="#" id="explanation6d" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                </div>
+          
+                <div class="question intermediate">
+                  "Homoscedasticity" refers to:
+                </div>
+          
+                <div class="answers">
+                  <div id="answer7a">
+                    <label>
+                      <input type="radio" name="question7" value="a">
+                      a: Constant variance of residuals
+                    </label>
+                    <a href="#" id="explanation7a" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer7b">
+                    <label>
+                      <input type="radio" name="question7" value="b">
+                      b: Linear relationship between variables
+                    </label>
+                    <a href="#" id="explanation7b" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer7c">
+                    <label>
+                      <input type="radio" name="question7" value="c">
+                      c: Independence of errors
+                    </label>
+                    <a href="#" id="explanation7c" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer7d">
+                    <label>
+                      <input type="radio" name="question7" value="d">
+                      d: Normal distribution of errors
+                    </label>
+                    <a href="#" id="explanation7d" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                </div>
+          
+                <div class="question beginner">
+                  If the correlation coefficient (r) is 0.9, what does it indicate?
+                </div>
+          
+                <div class="answers">
+                  <div id="answer8a">
+                    <label>
+                      <input type="radio" name="question8" value="a">
+                      a: Strong negative linear relationship
+                    </label>
+                    <a href="#" id="explanation8a" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer8b">
+                    <label>
+                      <input type="radio" name="question8" value="b">
+                      b: Weak positive linear relationship
+                    </label>
+                    <a href="#" id="explanation8b" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer8c">
+                    <label>
+                      <input type="radio" name="question8" value="c">
+                      c: Strong positive linear relationship
+                    </label>
+                    <a href="#" id="explanation8c" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer8d">
+                    <label>
+                      <input type="radio" name="question8" value="d">
+                      d: No relationship
+                    </label>
+                    <a href="#" id="explanation8d" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                </div>
+          
+                <div class="question beginner">
+                  What is the purpose of the fit() method in Scikit-learn?
+                </div>
+          
+                <div class="answers">
+                  <div id="answer9a">
+                    <label>
+                      <input type="radio" name="question9" value="a">
+                      a: To make predictions
+                    </label>
+                    <a href="#" id="explanation9a" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer9b">
+                    <label>
+                      <input type="radio" name="question9" value="b">
+                      b: To train the model
+                    </label>
+                    <a href="#" id="explanation9b" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer9c">
+                    <label>
+                      <input type="radio" name="question9" value="c">
+                      c: To evaluate the model
+                    </label>
+                    <a href="#" id="explanation9c" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                  <div id="answer9d">
+                    <label>
+                      <input type="radio" name="question9" value="d">
+                      d: To load data
+                    </label>
+                    <a href="#" id="explanation9d" class="accordion" onclick="return false;">Explanation</a>
+                  </div>
+                  <p class="panel">Explanation</p>
+                </div>
+              </div>
+              <button id="submit" class="btn btn-primary">Submit Quiz</button>
+              <div id="results"></div>
             </div>
-                  <div id="difficulty-container" style="border-bottom: 1px solid #eaecef; padding-bottom: .3em; margin: 0" class="row">
-                    <div id="difficulty-label" class="col-12 col-md-3" style="display:none"><strong>Choose difficulty: </strong></div>
-                    <div class="form-check col-12 col-md-3" style="display:none">
-                      <input id="beginner" type="checkbox" value="">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        <strong>Beginner</strong>
-                      </label>
-                    </div>
-                    <div class="form-check col-12 col-md-3" style="display:none">
-                      <input id="intermediate" type="checkbox" value="">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        <strong>Intermediate</strong>
-                      </label>
-                    </div>
-                    <div class="form-check col-12 col-md-3" style="display:none">
-                      <input id="advanced" type="checkbox" value="">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        <strong>Advanced</strong>
-                      </label>
-                    </div>
-                  </div>
-                  
-                  <div id="quiz" class="versiontrue" style="margin-top: 1rem">
-                
-                
-                  <div class="question beginner">
-                    What type of problem does Linear Regression solve?
-                  </div>
-                  
-                  <div class="answers">
-                    <div id="answer0a">
-                      <label>
-                        <input type="radio" name="question0" value="a">
-                        a: Classification
-                      </label>
-                      <a href="#" id="explanation0a" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer0b">
-                      <label>
-                        <input type="radio" name="question0" value="b">
-                        b: Regression
-                      </label>
-                      <a href="#" id="explanation0b" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer0c">
-                      <label>
-                        <input type="radio" name="question0" value="c">
-                        c: Clustering
-                      </label>
-                      <a href="#" id="explanation0c" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer0d">
-                      <label>
-                        <input type="radio" name="question0" value="d">
-                        d: Dimensionality Reduction
-                      </label>
-                      <a href="#" id="explanation0d" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                </div>
-                
-                  <div class="question beginner">
-                    In the equation Y = β₀ + β₁X, what represents the intercept?
-                  </div>
-                  
-                  <div class="answers">
-                    <div id="answer1a">
-                      <label>
-                        <input type="radio" name="question1" value="a">
-                        a: Y
-                      </label>
-                      <a href="#" id="explanation1a" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer1b">
-                      <label>
-                        <input type="radio" name="question1" value="b">
-                        b: β₁
-                      </label>
-                      <a href="#" id="explanation1b" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer1c">
-                      <label>
-                        <input type="radio" name="question1" value="c">
-                        c: X
-                      </label>
-                      <a href="#" id="explanation1c" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer1d">
-                      <label>
-                        <input type="radio" name="question1" value="d">
-                        d: β₀
-                      </label>
-                      <a href="#" id="explanation1d" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                </div>
-                
-                  <div class="question intermediate">
-                    Which metric measures the average squared difference between actual and predicted values?
-                  </div>
-                  
-                  <div class="answers">
-                    <div id="answer2a">
-                      <label>
-                        <input type="radio" name="question2" value="a">
-                        a: MAE
-                      </label>
-                      <a href="#" id="explanation2a" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer2b">
-                      <label>
-                        <input type="radio" name="question2" value="b">
-                        b: RMSE
-                      </label>
-                      <a href="#" id="explanation2b" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer2c">
-                      <label>
-                        <input type="radio" name="question2" value="c">
-                        c: MSE
-                      </label>
-                      <a href="#" id="explanation2c" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer2d">
-                      <label>
-                        <input type="radio" name="question2" value="d">
-                        d: R²
-                      </label>
-                      <a href="#" id="explanation2d" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                </div>
-                
-                  <div class="question intermediate">
-                    What is the range of the R² score?
-                  </div>
-                  
-                  <div class="answers">
-                    <div id="answer3a">
-                      <label>
-                        <input type="radio" name="question3" value="a">
-                        a: 0 to 1 (usually)
-                      </label>
-                      <a href="#" id="explanation3a" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer3b">
-                      <label>
-                        <input type="radio" name="question3" value="b">
-                        b: −1 to 1
-                      </label>
-                      <a href="#" id="explanation3b" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer3c">
-                      <label>
-                        <input type="radio" name="question3" value="c">
-                        c: 0 to infinity
-                      </label>
-                      <a href="#" id="explanation3c" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer3d">
-                      <label>
-                        <input type="radio" name="question3" value="d">
-                        d: −infinity to 1
-                      </label>
-                      <a href="#" id="explanation3d" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                </div>
-                
-                  <div class="question beginner">
-                    Which library in Python is commonly used for implementing Linear Regression models?
-                  </div>
-                  
-                  <div class="answers">
-                    <div id="answer4a">
-                      <label>
-                        <input type="radio" name="question4" value="a">
-                        a: NumPy
-                      </label>
-                      <a href="#" id="explanation4a" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer4b">
-                      <label>
-                        <input type="radio" name="question4" value="b">
-                        b: Pandas
-                      </label>
-                      <a href="#" id="explanation4b" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer4c">
-                      <label>
-                        <input type="radio" name="question4" value="c">
-                        c: Scikit-learn
-                      </label>
-                      <a href="#" id="explanation4c" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer4d">
-                      <label>
-                        <input type="radio" name="question4" value="d">
-                        d: Matplotlib
-                      </label>
-                      <a href="#" id="explanation4d" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                </div>
-                
-                  <div class="question beginner">
-                    Prior to training, why do we split data into training and testing sets?
-                  </div>
-                  
-                  <div class="answers">
-                    <div id="answer5a">
-                      <label>
-                        <input type="radio" name="question5" value="a">
-                        a: To make the dataset smaller
-                      </label>
-                      <a href="#" id="explanation5a" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer5b">
-                      <label>
-                        <input type="radio" name="question5" value="b">
-                        b: To evaluate model performance on unseen data
-                      </label>
-                      <a href="#" id="explanation5b" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer5c">
-                      <label>
-                        <input type="radio" name="question5" value="c">
-                        c: To remove outliers
-                      </label>
-                      <a href="#" id="explanation5c" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer5d">
-                      <label>
-                        <input type="radio" name="question5" value="d">
-                        d: To balance the classes
-                      </label>
-                      <a href="#" id="explanation5d" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                </div>
-                
-                  <div class="question intermediate">
-                    What must be done to categorical variables before using them in Linear Regression?
-                  </div>
-                  
-                  <div class="answers">
-                    <div id="answer6a">
-                      <label>
-                        <input type="radio" name="question6" value="a">
-                        a: Remove them
-                      </label>
-                      <a href="#" id="explanation6a" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer6b">
-                      <label>
-                        <input type="radio" name="question6" value="b">
-                        b: Normalize them
-                      </label>
-                      <a href="#" id="explanation6b" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer6c">
-                      <label>
-                        <input type="radio" name="question6" value="c">
-                        c: Encode them into numbers
-                      </label>
-                      <a href="#" id="explanation6c" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer6d">
-                      <label>
-                        <input type="radio" name="question6" value="d">
-                        d: Leave them as text
-                      </label>
-                      <a href="#" id="explanation6d" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                </div>
-                
-                  <div class="question intermediate">
-                    "Homoscedasticity" refers to:
-                  </div>
-                  
-                  <div class="answers">
-                    <div id="answer7a">
-                      <label>
-                        <input type="radio" name="question7" value="a">
-                        a: Constant variance of residuals
-                      </label>
-                      <a href="#" id="explanation7a" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer7b">
-                      <label>
-                        <input type="radio" name="question7" value="b">
-                        b: Linear relationship between variables
-                      </label>
-                      <a href="#" id="explanation7b" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer7c">
-                      <label>
-                        <input type="radio" name="question7" value="c">
-                        c: Independence of errors
-                      </label>
-                      <a href="#" id="explanation7c" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer7d">
-                      <label>
-                        <input type="radio" name="question7" value="d">
-                        d: Normal distribution of errors
-                      </label>
-                      <a href="#" id="explanation7d" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                </div>
-                
-                  <div class="question beginner">
-                    If the correlation coefficient (r) is 0.9, what does it indicate?
-                  </div>
-                  
-                  <div class="answers">
-                    <div id="answer8a">
-                      <label>
-                        <input type="radio" name="question8" value="a">
-                        a: Strong negative linear relationship
-                      </label>
-                      <a href="#" id="explanation8a" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer8b">
-                      <label>
-                        <input type="radio" name="question8" value="b">
-                        b: Weak positive linear relationship
-                      </label>
-                      <a href="#" id="explanation8b" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer8c">
-                      <label>
-                        <input type="radio" name="question8" value="c">
-                        c: Strong positive linear relationship
-                      </label>
-                      <a href="#" id="explanation8c" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer8d">
-                      <label>
-                        <input type="radio" name="question8" value="d">
-                        d: No relationship
-                      </label>
-                      <a href="#" id="explanation8d" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                </div>
-                
-                  <div class="question beginner">
-                    What is the purpose of the fit() method in Scikit-learn?
-                  </div>
-                  
-                  <div class="answers">
-                    <div id="answer9a">
-                      <label>
-                        <input type="radio" name="question9" value="a">
-                        a: To make predictions
-                      </label>
-                      <a href="#" id="explanation9a" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer9b">
-                      <label>
-                        <input type="radio" name="question9" value="b">
-                        b: To train the model
-                      </label>
-                      <a href="#" id="explanation9b" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer9c">
-                      <label>
-                        <input type="radio" name="question9" value="c">
-                        c: To evaluate the model
-                      </label>
-                      <a href="#" id="explanation9c" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                    <div id="answer9d">
-                      <label>
-                        <input type="radio" name="question9" value="d">
-                        d: To load data
-                      </label>
-                      <a href="#" id="explanation9d" class="accordion" onclick="return false;">Explanation</a>
-                    </div>
-                    <p class="panel">Explanation</p>
-                </div>
-               </div>
-                <button id="submit" class="btn btn-primary">Submit Quiz</button>
-                <div id="results"></div>
-          </div>
-            
+          
             <script>
               const myQuestions = [{"question":"What type of problem does Linear Regression solve?","answers":{"a":"Classification","b":"Regression","c":"Clustering","d":"Dimensionality Reduction"},"explanations":{"a":"Incorrect: Classification predicts categorical class labels.","b":"Correct: Regression models are used to predict continuous numerical values.","c":"Incorrect: Clustering groups unlabelled data based on similarity.","d":"Incorrect: Dimensionality reduction reduces the number of features."},"correctAnswer":"b","difficulty":"beginner"},{"question":"In the equation Y = β₀ + β₁X, what represents the intercept?","answers":{"a":"Y","b":"β₁","c":"X","d":"β₀"},"explanations":{"a":"Incorrect: Y is the dependent variable.","b":"Incorrect: β₁ is the slope or coefficient.","c":"Incorrect: X is the independent variable.","d":"Correct: β₀ is the y-intercept where the line crosses the y-axis."},"correctAnswer":"d","difficulty":"beginner"},{"question":"Which metric measures the average squared difference between actual and predicted values?","answers":{"a":"MAE","b":"RMSE","c":"MSE","d":"R²"},"explanations":{"a":"Incorrect: MAE measures average absolute error, not squared error.","b":"Incorrect: RMSE is the square root of MSE.","c":"Correct: Mean Squared Error computes the average of squared residuals.","d":"Incorrect: R² measures explained variance, not error."},"correctAnswer":"c","difficulty":"intermediate"},{"question":"What is the range of the R² score?","answers":{"a":"0 to 1 (usually)","b":"−1 to 1","c":"0 to infinity","d":"−infinity to 1"},"explanations":{"a":"Incorrect: Although common, R² can be negative.","b":"Incorrect: This is the range of the correlation coefficient r.","c":"Incorrect: R² cannot exceed 1.","d":"Correct: Poor models can have negative R² values."},"correctAnswer":"d","difficulty":"intermediate"},{"question":"Which library in Python is commonly used for implementing Linear Regression models?","answers":{"a":"NumPy","b":"Pandas","c":"Scikit-learn","d":"Matplotlib"},"explanations":{"a":"Incorrect: NumPy provides numerical operations but not ML models.","b":"Incorrect: Pandas is used for data manipulation.","c":"Correct: Scikit-learn provides ready-to-use Linear Regression models.","d":"Incorrect: Matplotlib is used for visualization."},"correctAnswer":"c","difficulty":"beginner"},{"question":"Prior to training, why do we split data into training and testing sets?","answers":{"a":"To make the dataset smaller","b":"To evaluate model performance on unseen data","c":"To remove outliers","d":"To balance the classes"},"explanations":{"a":"Incorrect: Dataset size reduction is not the goal.","b":"Correct: It helps measure generalization ability.","c":"Incorrect: Splitting does not remove outliers.","d":"Incorrect: Class balancing is a separate preprocessing step."},"correctAnswer":"b","difficulty":"beginner"},{"question":"What must be done to categorical variables before using them in Linear Regression?","answers":{"a":"Remove them","b":"Normalize them","c":"Encode them into numbers","d":"Leave them as text"},"explanations":{"a":"Incorrect: This may discard useful information.","b":"Incorrect: Normalization applies to numerical data.","c":"Correct: Linear Regression requires numerical input.","d":"Incorrect: Mathematical operations cannot be performed on text."},"correctAnswer":"c","difficulty":"intermediate"},{"question":"\"Homoscedasticity\" refers to:","answers":{"a":"Constant variance of residuals","b":"Linear relationship between variables","c":"Independence of errors","d":"Normal distribution of errors"},"explanations":{"a":"Correct: Errors should have equal variance across all X values.","b":"Incorrect: This describes linearity.","c":"Incorrect: This refers to independence.","d":"Incorrect: This refers to normality."},"correctAnswer":"a","difficulty":"intermediate"},{"question":"If the correlation coefficient (r) is 0.9, what does it indicate?","answers":{"a":"Strong negative linear relationship","b":"Weak positive linear relationship","c":"Strong positive linear relationship","d":"No relationship"},"explanations":{"a":"Incorrect: Negative values indicate inverse relationships.","b":"Incorrect: Values close to 0 indicate weak relationships.","c":"Correct: Values close to +1 indicate strong positive correlation.","d":"Incorrect: Zero indicates no linear relationship."},"correctAnswer":"c","difficulty":"beginner"},{"question":"What is the purpose of the fit() method in Scikit-learn?","answers":{"a":"To make predictions","b":"To train the model","c":"To evaluate the model","d":"To load data"},"explanations":{"a":"Incorrect: predict() is used for prediction.","b":"Correct: fit() learns model parameters from training data.","c":"Incorrect: Evaluation uses metrics or score().","d":"Incorrect: Data loading uses functions like read_csv()."},"correctAnswer":"b","difficulty":"beginner"}];
             </script>
-              <script src="./assets/js/assessment_v2.js"></script>  
+            <script src="./assets/js/assessment_v2.js"></script>
           <div class="bug-report-mobile">
               <bug-report id="bug-report" title="[BUG REPORT] LINEAR REGRESSION" page-type="assesment" context-info="{&quot;organisation&quot;:&quot;Virtual Labs&quot;,&quot;developer_institute&quot;:&quot;DLBG&quot;,&quot;expname&quot;:&quot;LINEAR REGRESSION&quot;,&quot;labname&quot;:&quot;Virtual Lab&quot;,&quot;phase&quot;:&quot;Testing&quot;}" checkbox-json="{&quot;text&quot;:[&quot;Insufficient Content&quot;],&quot;video&quot;:[&quot;Insufficient Content&quot;],&quot;assesment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;assessment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;simulation&quot;:[&quot;Simulation Not Working&quot;,&quot;Incorrect Results/Observations&quot;,&quot;Insufficient/Incorrect Instructions&quot;],&quot;DEFAULT&quot;:[&quot;Page Not Loading&quot;,&quot;Content Not Visible&quot;,&quot;Incorrect Content&quot;]}" position="override" button_style="
                           position: fixed; 

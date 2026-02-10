@@ -1092,12 +1092,32 @@ function renderSidebar() {
     </svg>
     Download Experiment
   `;
-  downloadBtn.style.backgroundColor = "#F57C2A"; // Orange (#F57C2A)
   downloadBtn.style.textAlign = 'center';
   downloadBtn.style.marginTop = "10px";
-  downloadBtn.style.color = "white";
-  downloadBtn.onclick = downloadPDF;
+  
+  // Check if all steps are completed
+  const allCompleted = checkAllStepsCompleted();
+  if (allCompleted) {
+    downloadBtn.style.backgroundColor = "#F57C2A";
+    downloadBtn.style.color = "white";
+    downloadBtn.style.opacity = "1";
+    downloadBtn.style.cursor = "pointer";
+    downloadBtn.disabled = false;
+    downloadBtn.onclick = downloadPDF;
+  } else {
+    downloadBtn.style.backgroundColor = "#ccc";
+    downloadBtn.style.color = "#666";
+    downloadBtn.style.opacity = "0.7";
+    downloadBtn.style.cursor = "not-allowed";
+    downloadBtn.disabled = true;
+    downloadBtn.title = "Complete all steps to download the report";
+  }
   stepsContainer.appendChild(downloadBtn);
+}
+
+// Function to check if all steps are completed
+function checkAllStepsCompleted() {
+  return STATE.stepsStatus.every(status => status.completed);
 }
 
 
