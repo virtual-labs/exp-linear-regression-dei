@@ -48,3 +48,21 @@ The coefficients of the regression model are estimated using the Least Squares M
 - **Linearity Assumption:** The model cannot capture non-linear relationships unless manual feature transformations (e.g., polynomial terms) are applied.
 - **Sensitivity to Outliers:** Least Squares estimation squares residuals, giving excessive weight to outliers, which can significantly distort the model.
 - **Multicollinearity Issues:** High correlation among independent variables leads to unstable coefficient estimates and reduced interpretability in Multiple Linear Regression.
+
+#### 7. Algorithm
+
+1. **Step 1:** Let X be the input features and (Y) be output values
+2. **Step 2:** Assume a linear relationship: `y = β₀ + β₁x₁ + β₂x₂ + ... + βₙxₙ`
+    - β₀ is the intercept (value when all x = 0)
+    - β₁, β₂, ... are coefficients (weights) for each feature
+3. **Step 3:** Define the error (residual) for each data point:
+    - Error = Actual value - Predicted value
+    - `eᵢ = yᵢ - (β₀ + β₁x₁ᵢ + β₂x₂ᵢ + ...)`
+4. **Step 4:** Calculate total error using Sum of Squared Errors (SSE):
+    - `SSE = Σ(eᵢ)² = Σ(yᵢ - ŷᵢ)²`
+5. **Step 5:** Find coefficients that minimize SSE using Normal Equation:
+    - `β = (XᵀX)⁻¹Xᵀy`
+    - Where X is the feature matrix and y is the target vector
+6. **Step 6:** For new data, predict using:
+    - `ŷ = β₀ + β₁x₁ + β₂x₂ + ... + βₙxₙ`
+
