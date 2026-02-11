@@ -954,6 +954,8 @@ print(best_predictions)`,
 let stepsData = [];
 
 // State Management
+let hasCompletedOnce = sessionStorage.getItem('lr_completed') === 'true';
+
 let STATE = {
   stepIndex: 0,
   subStepIndex: 0,
@@ -1095,8 +1097,8 @@ function renderSidebar() {
   downloadBtn.style.textAlign = 'center';
   downloadBtn.style.marginTop = "10px";
   
-  // Check if all steps are completed
-  const allCompleted = checkAllStepsCompleted();
+  // Check if all steps are completed (or were completed before a restart)
+  const allCompleted = checkAllStepsCompleted() || hasCompletedOnce;
   if (allCompleted) {
     downloadBtn.style.backgroundColor = "#F57C2A";
     downloadBtn.style.color = "white";
@@ -1384,6 +1386,8 @@ window.animateConfusionMatrix = function () {
 
 // Completion Message
 function showCompletionMessage() {
+  hasCompletedOnce = true;
+  sessionStorage.setItem('lr_completed', 'true');
   outputContent.innerHTML = ''; // Clear output content
   bottomPane.classList.add('active-output');
   bottomPane.style.display = 'flex';
