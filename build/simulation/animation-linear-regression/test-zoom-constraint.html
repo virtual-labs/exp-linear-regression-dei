@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zoom Constraint Bug Exploration Tests</title>
+  <style>
+    body {
+      font-family: 'Consolas', 'Courier New', monospace;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    h1 { color: #333; }
+    .test-section {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .test-case {
+      margin: 15px 0;
+      padding: 10px;
+      border-left: 4px solid #ccc;
+      background: #fafafa;
+    }
+    .pass { border-left-color: #4caf50; background: #f1f8f4; }
+    .fail { border-left-color: #f44336; background: #fef5f5; }
+    .expected-fail { border-left-color: #ff9800; background: #fff8f0; }
+    .status { font-weight: bold; margin-right: 10px; }
+    .pass .status { color: #4caf50; }
+    .fail .status { color: #f44336; }
+    .expected-fail .status { color: #ff9800; }
+    pre { 
+      background: #f5f5f5; 
+      padding: 10px; 
+      border-radius: 4px; 
+      overflow-x: auto;
+      font-size: 12px;
+    }
+    button {
+      background: #6a1b9a;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      margin: 5px;
+    }
+    button:hover { background: #4a148c; }
+    #canvas-container {
+      display: none;
+    }
+    .summary {
+      background: #e3f2fd;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔍 Bug Condition Exploration Tests</h1>
+  <p><strong>Purpose:</strong> Surface counterexamples that demonstrate the bugs exist on UNFIXED code</p>
+  <p><strong>Expected:</strong> Zoom and margin tests should FAIL (proving bugs exist), plot area test should PASS</p>
+  
+  <button onclick="runAllTests()">Run All Tests</button>
+  <button onclick="location.reload()">Reset</button>
+  
+  <div id="summary" class="summary" style="display:none;"></div>
+  <div id="results"></div>
+  
+  <div id="canvas-container">
+    <canvas id="testCanvas" width="800" height="650"></canvas>
+  </div>
+
+  <script src="./script.js"></script>
+  <script>
+    // Test utilities
+    const results = [];
+    
+    function logTest(name, passed, expectedToFail, details) {
+      results.push({ name, passed, expectedToFail, details });
+      displayResults();
+    }
+    
+    function displayResults() {
+      const container = document.getElementById('results');
+      container.innerHTML = '';
+      
+      let passCount = 0;
+      let failCount = 0;
+      let expectedFailCount = 0;
+      
+      results.forEach(result => {
+        const div = document.createElement('div');
+        div.className = 'test-case';
+        
+        if (result.expectedToFail && !result.passed) {
+          div.classList.add('expected-fail');
+          expectedFailCount++;
+        } else if (result.passed) {
+          div.classList.add('pass');
+          passCount++;
+        } else {
+          div.classList.add('fail');
+          failCount++;
+        }
+        
+        const status = result.expectedToFail && !result.passed 
+          ? '⚠️ EXPECTED FAIL' 
+          : result.passed ? '✅ PASS' : '❌ FAIL';
+        
+        div.innerHTML = `
+          <div><span class="status">${status}</span>${result.name}</div>
+          <pre>${result.details}</pre>
+        `;
+        container.appendChild(div);
+      });
+      
+      // Show summary
+      const summary = document.getElementById('summary');
+      summary.style.display = 'block';
+      summary.innerHTML = `
+        <strong>Test Summary:</strong><br>
+        ✅ Passed: ${passCount}<br>
+        ❌ Failed: ${failCount}<br>
+        ⚠️ Expected Failures (bugs confirmed): ${expectedFailCount}<br>
+        <strong>Total: ${results.length}</strong>
+      `;
+    }
+    
+    // Setup test environment
+    function setupTestEnvironment() {
+      const canvas = document.getElementById('testCanvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Reset state
+      if (typeof state !== 'undefined') {
+        state.interactivePoints = [];
+        state.interactiveViewport = { x: [-100, 100], y: [-100, 100] };
+        state.appMode = 'interactive';
+      }
+      
+      return { canvas, ctx };
+    }
+    
+    // Test 1: Excessive Zoom Out
+    function testExcessiveZoomOut() {
+      const { canvas, ctx } = setupTestEnvironment();
+      
+      // Simulate repeated zoom-out events
+      const initialSpan = state.interactiveViewport.x[1] - state.interactiveViewport.x[0];
+      let zoomOutCount = 0;
+      
+      // Zoom out until we exceed 500 units or reach maximum
+      while (zoomOutCount < 50) {
+        const currentSpan = state.interactiveViewport.x[1] - state.interactiveViewport.x[0];
+        
+        // Simulate wheel event (zoom out)
+        const wheelEvent = new WheelEvent('wheel', {
+          deltaY: 100, // positive = zoom out
+          clientX: canvas.width / 2,
+          clientY: canvas.height / 2,
+          bubbles: true
+        });
+        
+        canvas.dispatchEvent(wheelEvent);
+        zoomOutCount++;
+        
+        const newSpan = state.interactiveViewport.x[1] - state.interactiveViewport.x[0];
+        if (newSpan >= 500) break;
+      }
+      
+      const finalSpan = state.interactiveViewport.x[1] - state.interactiveViewport.x[0];
+      const passed = finalSpan <= 500;
+      
+      logTest(
+        'Property 1.1: Excessive Zoom Out - Viewport should be constrained to 500 units',
+        passed,
+        true, // Expected to fail on unfixed code
+        `Initial span: ${initialSpan.toFixed(2)} units\n` +
+        `Final span after ${zoomOutCount} zoom-out events: ${finalSpan.toFixed(2)} units\n` +
+        `Expected: <= 500 units\n` +
+        `Result: ${passed ? 'CONSTRAINED ✓' : 'EXCEEDED (BUG CONFIRMED) ✗'}\n` +
+        `Counterexample: Viewport span reaches ${finalSpan.toFixed(2)} units`
+      );
+    }
+    
+    // Test 2: Click in Left Margin
+    function testClickInLeftMargin() {
+      const { canvas, ctx } = setupTestEnvironment();
+      
+      const pointsBefore = state.interactivePoints.length;
+      
+      // Click in left margin (where Y-axis labels are)
+      const clickEvent = new MouseEvent('mousedown', {
+        clientX: canvas.getBoundingClientRect().left + 10, // x=10px (in left margin)
+        clientY: canvas.getBoundingClientRect().top + 300,
+        bubbles: true
+      });
+      
+      canvas.dispatchEvent(clickEvent);
+      
+      const pointsAfter = state.interactivePoints.length;
+      const pointAdded = pointsAfter > pointsBefore;
+      const passed = !pointAdded;
+      
+      logTest(
+        'Property 1.2: Click in Left Margin - Point should NOT be added',
+        passed,
+        true, // Expected to fail on unfixed code
+        `Click location: (10px, 300px) - in left margin area\n` +
+        `Points before: ${pointsBefore}\n` +
+        `Points after: ${pointsAfter}\n` +
+        `Point added: ${pointAdded}\n` +
+        `Expected: No point added\n` +
+        `Result: ${passed ? 'CORRECT ✓' : 'POINT ADDED IN MARGIN (BUG CONFIRMED) ✗'}\n` +
+        `Counterexample: Point added at pixel (10, 300) in left margin`
+      );
+    }
+    
+    // Test 3: Click in Top Margin
+    function testClickInTopMargin() {
+      const { canvas, ctx } = setupTestEnvironment();
+      
+      const pointsBefore = state.interactivePoints.length;
+      
+      // Click in top margin
+      const clickEvent = new MouseEvent('mousedown', {
+        clientX: canvas.getBoundingClientRect().left + 200,
+        clientY: canvas.getBoundingClientRect().top + 10, // y=10px (in top margin)
+        bubbles: true
+      });
+      
+      canvas.dispatchEvent(clickEvent);
+      
+      const pointsAfter = state.interactivePoints.length;
+      const pointAdded = pointsAfter > pointsBefore;
+      const passed = !pointAdded;
+      
+      logTest(
+        'Property 1.3: Click in Top Margin - Point should NOT be added',
+        passed,
+        true, // Expected to fail on unfixed code
+        `Click location: (200px, 10px) - in top margin area\n` +
+        `Points before: ${pointsBefore}\n` +
+        `Points after: ${pointsAfter}\n` +
+        `Point added: ${pointAdded}\n` +
+        `Expected: No point added\n` +
+        `Result: ${passed ? 'CORRECT ✓' : 'POINT ADDED IN MARGIN (BUG CONFIRMED) ✗'}\n` +
+        `Counterexample: Point added at pixel (200, 10) in top margin`
+      );
+    }
+    
+    // Test 4: Click in Bottom Margin
+    function testClickInBottomMargin() {
+      const { canvas, ctx } = setupTestEnvironment();
+      
+      const pointsBefore = state.interactivePoints.length;
+      
+      // Click in bottom margin
+      const clickEvent = new MouseEvent('mousedown', {
+        clientX: canvas.getBoundingClientRect().left + 200,
+        clientY: canvas.getBoundingClientRect().top + canvas.height - 10, // near bottom
+        bubbles: true
+      });
+      
+      canvas.dispatchEvent(clickEvent);
+      
+      const pointsAfter = state.interactivePoints.length;
+      const pointAdded = pointsAfter > pointsBefore;
+      const passed = !pointAdded;
+      
+      logTest(
+        'Property 1.4: Click in Bottom Margin - Point should NOT be added',
+        passed,
+        true, // Expected to fail on unfixed code
+        `Click location: (200px, ${canvas.height - 10}px) - in bottom margin area\n` +
+        `Points before: ${pointsBefore}\n` +
+        `Points after: ${pointsAfter}\n` +
+        `Point added: ${pointAdded}\n` +
+        `Expected: No point added\n` +
+        `Result: ${passed ? 'CORRECT ✓' : 'POINT ADDED IN MARGIN (BUG CONFIRMED) ✗'}\n` +
+        `Counterexample: Point added at pixel (200, ${canvas.height - 10}) in bottom margin`
+      );
+    }
+    
+    // Test 5: Click in Right Margin
+    function testClickInRightMargin() {
+      const { canvas, ctx } = setupTestEnvironment();
+      
+      const pointsBefore = state.interactivePoints.length;
+      
+      // Click in right margin
+      const clickEvent = new MouseEvent('mousedown', {
+        clientX: canvas.getBoundingClientRect().left + canvas.width - 10, // near right edge
+        clientY: canvas.getBoundingClientRect().top + 300,
+        bubbles: true
+      });
+      
+      canvas.dispatchEvent(clickEvent);
+      
+      const pointsAfter = state.interactivePoints.length;
+      const pointAdded = pointsAfter > pointsBefore;
+      const passed = !pointAdded;
+      
+      logTest(
+        'Property 1.5: Click in Right Margin - Point should NOT be added',
+        passed,
+        true, // Expected to fail on unfixed code
+        `Click location: (${canvas.width - 10}px, 300px) - in right margin area\n` +
+        `Points before: ${pointsBefore}\n` +
+        `Points after: ${pointsAfter}\n` +
+        `Point added: ${pointAdded}\n` +
+        `Expected: No point added\n` +
+        `Result: ${passed ? 'CORRECT ✓' : 'POINT ADDED IN MARGIN (BUG CONFIRMED) ✗'}\n` +
+        `Counterexample: Point added at pixel (${canvas.width - 10}, 300) in right margin`
+      );
+    }
+    
+    // Test 6: Click Inside Plot Area (should work)
+    function testClickInsidePlotArea() {
+      const { canvas, ctx } = setupTestEnvironment();
+      
+      const pointsBefore = state.interactivePoints.length;
+      
+      // Click inside plot area (well within boundaries)
+      const clickEvent = new MouseEvent('mousedown', {
+        clientX: canvas.getBoundingClientRect().left + 200,
+        clientY: canvas.getBoundingClientRect().top + 300,
+        bubbles: true
+      });
+      
+      canvas.dispatchEvent(clickEvent);
+      
+      const pointsAfter = state.interactivePoints.length;
+      const pointAdded = pointsAfter > pointsBefore;
+      const passed = pointAdded;
+      
+      logTest(
+        'Property 1.6: Click Inside Plot Area - Point SHOULD be added (preservation)',
+        passed,
+        false, // Should pass on unfixed code
+        `Click location: (200px, 300px) - inside plot area\n` +
+        `Points before: ${pointsBefore}\n` +
+        `Points after: ${pointsAfter}\n` +
+        `Point added: ${pointAdded}\n` +
+        `Expected: Point added\n` +
+        `Result: ${passed ? 'CORRECT ✓' : 'FAILED ✗'}`
+      );
+    }
+    
+    // Run all tests
+    function runAllTests() {
+      results.length = 0;
+      document.getElementById('results').innerHTML = '';
+      document.getElementById('summary').style.display = 'none';
+      
+      setTimeout(() => {
+        testExcessiveZoomOut();
+        setTimeout(() => {
+          testClickInLeftMargin();
+          setTimeout(() => {
+            testClickInTopMargin();
+            setTimeout(() => {
+              testClickInBottomMargin();
+              setTimeout(() => {
+                testClickInRightMargin();
+                setTimeout(() => {
+                  testClickInsidePlotArea();
+                }, 100);
+              }, 100);
+            }, 100);
+          }, 100);
+        }, 100);
+      }, 100);
+    }
+  </script>
+</body>
+</html>
