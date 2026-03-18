@@ -1417,12 +1417,36 @@ function showCompletionMessage() {
       </div>
       <h1 style="color: #2a9d8f; font-size: 2.5rem; margin-bottom: 20px;">Congratulations!</h1>
       <p style="font-size: 1.2rem; color: #333; max-width: 600px; margin: 0 auto;">You have successfully completed Linear Regression experiment. You now understand how Linear Regression models are used to predict continuous values and evaluate their effectiveness.</p>
+      <button onclick="openLinearRegressionAnimation()" style="
+        margin-top: 24px;
+        background: #1e293b;
+        color: white;
+        border: none;
+        padding: 16px 32px;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        transition: all 0.2s;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      " onmouseover="this.style.background='#334155'; this.style.transform='translateY(-2px)'"
+         onmouseout="this.style.background='#1e293b'; this.style.transform='translateY(0)'">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        Enter Interactive Animation
+      </button>
       <button onclick="restartExperiment()" style="margin-top: 30px; padding: 15px 30px; background-color: #f7a072; color: white; border: none; border-radius: 10px; font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">Restart Experiment</button>
     </div>
   `;
   outputContent.innerHTML = msgHTML;
   // Hide run button or make it inactive
   runBtn.style.display = 'none';
+}
+
+function openLinearRegressionAnimation() {
+  window.open('./animation-linear-regression/index.html', '_blank');
 }
 
 // PDF Download Logic

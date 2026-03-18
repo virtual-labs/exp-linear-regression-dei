@@ -2,6 +2,91 @@
   "version": 2.0,
   "questions": [
     {
+      "question": "What is the main objective of Linear Regression?",
+      "answers": {
+        "a": "Classify data into categories",
+        "b": "Predict continuous numerical values",
+        "c": "Group similar data points",
+        "d": "Reduce dimensionality of data"
+      },
+      "explanations": {
+        "a": "Incorrect: Classification tasks are handled by algorithms like Logistic Regression or Decision Trees.",
+        "b": "Correct: Linear Regression is used to predict continuous values such as prices or sales.",
+        "c": "Incorrect: Grouping data points is done using clustering algorithms like K-Means.",
+        "d": "Incorrect: Dimensionality reduction is done using techniques like PCA."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In the Linear Regression equation Y = β₀ + β₁X + ε, the term β₁ represents:",
+      "answers": {
+        "a": "Intercept of the regression line",
+        "b": "Slope of the regression line",
+        "c": "Error term",
+        "d": "Target variable"
+      },
+      "explanations": {
+        "a": "Incorrect: The intercept is represented by β₀.",
+        "b": "Correct: The slope indicates how much the dependent variable changes for a unit change in X.",
+        "c": "Incorrect: The error term is represented by ε.",
+        "d": "Incorrect: The target variable is represented by Y."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which variable is predicted in Linear Regression?",
+      "answers": {
+        "a": "Independent variable",
+        "b": "Dependent variable",
+        "c": "Feature variable",
+        "d": "Input variable"
+      },
+      "explanations": {
+        "a": "Incorrect: Independent variables are used as inputs to predict the target.",
+        "b": "Correct: The dependent variable is the output that the regression model predicts.",
+        "c": "Incorrect: Features are input variables used by the model.",
+        "d": "Incorrect: Input variables are predictors rather than predicted values."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which method is commonly used to estimate coefficients in Linear Regression?",
+      "answers": {
+        "a": "Least Squares Method",
+        "b": "K-Means Algorithm",
+        "c": "Decision Tree Method",
+        "d": "Random Forest Method"
+      },
+      "explanations": {
+        "a": "Correct: Least Squares minimizes the sum of squared differences between actual and predicted values.",
+        "b": "Incorrect: K-Means is used for clustering tasks.",
+        "c": "Incorrect: Decision Trees are a separate machine learning model.",
+        "d": "Incorrect: Random Forest is an ensemble learning technique."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which plot is most suitable for visualizing the relationship between two variables in Simple Linear Regression?",
+      "answers": {
+        "a": "Scatter Plot",
+        "b": "Pie Chart",
+        "c": "Histogram",
+        "d": "Bar Chart"
+      },
+      "explanations": {
+        "a": "Correct: A scatter plot shows the distribution of data points and the regression line.",
+        "b": "Incorrect: Pie charts represent proportions, not relationships between variables.",
+        "c": "Incorrect: Histograms show the distribution of a single variable.",
+        "d": "Incorrect: Bar charts are used for categorical comparisons."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
       "question": "Overfitting in Linear Regression is characterized by:",
       "answers": {
         "a": "High Train Error, High Test Error",
@@ -10,166 +95,81 @@
         "d": "Low Train Error, Low Test Error"
       },
       "explanations": {
-        "a": "Incorrect: This indicates underfitting where the model fails to learn the pattern.",
+        "a": "Incorrect: This indicates underfitting where the model fails to capture patterns.",
         "b": "Correct: The model fits training data well but performs poorly on unseen data.",
-        "c": "Incorrect: This scenario is practically unrealistic.",
-        "d": "Incorrect: This represents a well-generalized model."
+        "c": "Incorrect: This situation is highly unlikely in practice.",
+        "d": "Incorrect: This indicates a well-generalized model."
       },
       "correctAnswer": "b",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "If the residuals plot shows a funnel shape, which assumption is violated?",
-      "answers": {
-        "a": "Linearity",
-        "b": "Independence",
-        "c": "Homoscedasticity",
-        "d": "Normality"
-      },
-      "explanations": {
-        "a": "Incorrect: Linearity violations show curved patterns.",
-        "b": "Incorrect: Independence violations show autocorrelated patterns.",
-        "c": "Correct: Funnel shape indicates changing variance of residuals.",
-        "d": "Incorrect: Normality is checked using histograms or Q-Q plots."
-      },
-      "correctAnswer": "c",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "A negative coefficient for a feature implies:",
-      "answers": {
-        "a": "As the feature increases, the target increases",
-        "b": "As the feature increases, the target decreases",
-        "c": "The feature has no effect",
-        "d": "The feature is categorical"
-      },
-      "explanations": {
-        "a": "Incorrect: This describes a positive relationship.",
-        "b": "Correct: Negative coefficients indicate an inverse relationship.",
-        "c": "Incorrect: A zero coefficient implies no effect.",
-        "d": "Incorrect: Coefficient sign is unrelated to data type."
-      },
-      "correctAnswer": "b",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "Why do we check for Multicollinearity in Multiple Linear Regression?",
-      "answers": {
-        "a": "To increase model complexity",
-        "b": "Because correlated features make coefficient estimates unstable",
-        "c": "To add more features",
-        "d": "It is not required"
-      },
-      "explanations": {
-        "a": "Incorrect: Simpler models are preferred.",
-        "b": "Correct: Multicollinearity inflates variance and reduces interpretability.",
-        "c": "Incorrect: Multicollinearity often leads to feature removal.",
-        "d": "Incorrect: It is an important diagnostic check."
-      },
-      "correctAnswer": "b",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "Which value of RMSE is better?",
-      "answers": {
-        "a": "Higher is better",
-        "b": "Lower is better",
-        "c": "Exactly 0 is the only acceptable value",
-        "d": "Negative values"
-      },
-      "explanations": {
-        "a": "Incorrect: Higher error indicates poor predictions.",
-        "b": "Correct: Lower RMSE indicates predictions closer to actual values.",
-        "c": "Incorrect: Real-world data is noisy; zero error is rare.",
-        "d": "Incorrect: RMSE cannot be negative."
-      },
-      "correctAnswer": "b",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "What does a Residual vs. Predicted plot with random scatter indicate?",
-      "answers": {
-        "a": "The model is poor",
-        "b": "The assumptions are likely met (Good fit)",
-        "c": "The data is non-linear",
-        "d": "There are outliers"
-      },
-      "explanations": {
-        "a": "Incorrect: Patterns indicate a poor fit, not randomness.",
-        "b": "Correct: Random scatter suggests linearity and homoscedasticity.",
-        "c": "Incorrect: Non-linearity shows curved patterns.",
-        "d": "Incorrect: Outliers appear as isolated extreme points."
-      },
-      "correctAnswer": "b",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "In Simple Linear Regression, the number of degrees of freedom involves:",
-      "answers": {
-        "a": "Number of samples only",
-        "b": "Number of features only",
-        "c": "Number of samples and parameters estimated",
-        "d": "It is always 10"
-      },
-      "explanations": {
-        "a": "Incorrect: Model parameters also matter.",
-        "b": "Incorrect: Sample size affects degrees of freedom.",
-        "c": "Correct: Typically depends on n-p-1, where p is the number of predictor variables, and the 1 accounts for the intercept.",
-        "d": "Incorrect: Degrees of freedom vary with dataset size."
-      },
-      "correctAnswer": "c",
       "difficulty": "advanced"
     },
     {
-      "question": "Which plot is best for visualizing a Simple Linear Regression fit?",
+      "question": "What does a high value of RMSE indicate?",
       "answers": {
-        "a": "Box plot",
-        "b": "Scatter plot with line overlay",
-        "c": "Pie chart",
-        "d": "3D Surface plot"
+        "a": "The model predictions are very accurate",
+        "b": "The model has large prediction errors",
+        "c": "The dataset has more samples",
+        "d": "The model is overfitting"
       },
       "explanations": {
-        "a": "Incorrect: Box plots show distributions.",
-        "b": "Correct: It shows data points and the regression line.",
-        "c": "Incorrect: Pie charts represent proportions.",
-        "d": "Incorrect: Used for multivariate regression."
+        "a": "Incorrect: Lower RMSE indicates better prediction accuracy.",
+        "b": "Correct: Higher RMSE means predicted values are far from actual values.",
+        "c": "Incorrect: RMSE is unrelated to dataset size.",
+        "d": "Incorrect: RMSE alone cannot determine overfitting."
       },
       "correctAnswer": "b",
-      "difficulty": "beginner"
+      "difficulty": "advanced"
     },
     {
-      "question": "Lasso Regression (L1 regularization) helps in:",
+      "question": "If the residual plot shows a clear curved pattern, it indicates:",
       "answers": {
-        "a": "Feature Selection",
-        "b": "Increasing Variance",
-        "c": "Making the model more complex",
-        "d": "Fitting curves"
+        "a": "The model fits the data perfectly",
+        "b": "Violation of the linearity assumption",
+        "c": "Presence of multicollinearity",
+        "d": "Data normalization issue"
       },
       "explanations": {
-        "a": "Correct: Lasso can shrink coefficients exactly to zero.",
-        "b": "Incorrect: Regularization reduces variance.",
-        "c": "Incorrect: It simplifies the model.",
-        "d": "Incorrect: Lasso is still a linear model."
+        "a": "Incorrect: Perfect fit would show residuals close to zero.",
+        "b": "Correct: Curved patterns indicate the relationship is non-linear.",
+        "c": "Incorrect: Multicollinearity relates to correlation among independent variables.",
+        "d": "Incorrect: Normalization does not create curved residual patterns."
+      },
+      "correctAnswer": "b",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "Multicollinearity in Multiple Linear Regression occurs when:",
+      "answers": {
+        "a": "Independent variables are highly correlated with each other",
+        "b": "Dependent variables are correlated",
+        "c": "There are missing values in the dataset",
+        "d": "The dataset contains categorical features"
+      },
+      "explanations": {
+        "a": "Correct: This leads to unstable coefficient estimates.",
+        "b": "Incorrect: Regression usually predicts a single dependent variable.",
+        "c": "Incorrect: Missing values are a data preprocessing issue.",
+        "d": "Incorrect: Categorical features do not necessarily cause multicollinearity."
       },
       "correctAnswer": "a",
       "difficulty": "advanced"
     },
     {
-      "question": "The target variable in the 'Car Data' dataset was:",
+      "question": "Which regularization technique can shrink regression coefficients exactly to zero?",
       "answers": {
-        "a": "Car_Name",
-        "b": "Selling_Price",
-        "c": "Driven_kms",
-        "d": "Year"
+        "a": "Ridge Regression",
+        "b": "Lasso Regression",
+        "c": "Polynomial Regression",
+        "d": "Logistic Regression"
       },
       "explanations": {
-        "a": "Incorrect: This is an identifier.",
-        "b": "Correct: This was the predicted variable.",
-        "c": "Incorrect: This is an input feature.",
-        "d": "Incorrect: This is an input feature."
+        "a": "Incorrect: Ridge regression shrinks coefficients but does not reduce them to zero.",
+        "b": "Correct: Lasso uses L1 regularization which can eliminate features by shrinking coefficients to zero.",
+        "c": "Incorrect: Polynomial regression increases model complexity.",
+        "d": "Incorrect: Logistic regression is used for classification tasks."
       },
       "correctAnswer": "b",
-      "difficulty": "beginner"
+      "difficulty": "advanced"
     }
   ]
 }
