@@ -564,9 +564,59 @@ print("Interactive Prediction Table Loaded")`,
 </div>`
       }
     ]
-
+  },
+  {
+    id: 'model_simulation',
+    title: 'Model Simulation',
+    blocks: [
+      {
+        code: `# Interactive Multiple Linear Regression Simulation
+Click the 'Enter Interactive Animation' button to open the full-screen simulator.
+Explore how the regression plane fits multiple features of the car dataset in real-time.`,
+        output: `
+    <style>
+      @keyframes clap {
+        0%, 100% { transform: rotate(-15deg) scale(1); }
+        50% { transform: rotate(15deg) scale(1.1); }
+      }
+      .clapping-hands {
+        display: inline-block;
+        font-size: 2rem;
+        animation: clap 0.5s ease-in-out infinite;
+        margin: 0 5px;
+      }
+    </style>
+    <div style="text-align: center; padding: 10px; animation: fadeIn 0.8s ease;">
+      <div style="margin-bottom: 10px;">
+        <span class="clapping-hands">👏</span>
+        <span class="clapping-hands" style="animation-delay: 0.15s;">👏</span>
+        <span class="clapping-hands" style="animation-delay: 0.3s;">👏</span>
+      </div>
+      <h2 style="color: #2a9d8f; font-size: 1.8rem; margin: 0 0 10px 0;">Congratulations!</h2>
+      <p style="font-size: 1rem; color: #333; max-width: 550px; margin: 0 auto 15px auto; line-height: 1.4;">You have successfully completed the Multiple Linear Regression experiment. You now understand how to model relationships between multiple features and a target variable.</p>
+      <button onclick="openLinearRegressionAnimation()" style="
+        background: #1e293b;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.2s;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      " onmouseover="this.style.background='#334155'; this.style.transform='translateY(-2px)'"
+         onmouseout="this.style.background='#1e293b'; this.style.transform='translateY(0)'">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        Enter Interactive Animation
+      </button>
+    </div>`
+      }
+    ]
   }
-
 ];
 
 const SINGLE_VAR_STEPS = [
@@ -947,19 +997,72 @@ print(best_predictions)`,
 </table>`
       }
     ]
+  },
+  {
+    id: 'model_simulation',
+    title: 'Model Simulation',
+    blocks: [
+      {
+        code: `# Interactive Simple Linear Regression Simulation
+Click the 'Enter Interactive Animation' button to open the full-screen simulator.
+Explore how the regression line fits the salary dataset in real-time.`,
+        output: `
+    <style>
+      @keyframes clap {
+        0%, 100% { transform: rotate(-15deg) scale(1); }
+        50% { transform: rotate(15deg) scale(1.1); }
+      }
+      .clapping-hands {
+        display: inline-block;
+        font-size: 2rem;
+        animation: clap 0.5s ease-in-out infinite;
+        margin: 0 5px;
+      }
+    </style>
+    <div style="text-align: center; padding: 10px; animation: fadeIn 0.8s ease;">
+      <div style="margin-bottom: 10px;">
+        <span class="clapping-hands">👏</span>
+        <span class="clapping-hands" style="animation-delay: 0.15s;">👏</span>
+        <span class="clapping-hands" style="animation-delay: 0.3s;">👏</span>
+      </div>
+      <h2 style="color: #2a9d8f; font-size: 1.8rem; margin: 0 0 10px 0;">Congratulations!</h2>
+      <p style="font-size: 1rem; color: #333; max-width: 550px; margin: 0 auto 15px auto; line-height: 1.4;">You have successfully completed the Simple Linear Regression experiment. You now understand how to model relationships between a feature and a target variable.</p>
+      <button onclick="openLinearRegressionAnimation()" style="
+        background: #1e293b;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.2s;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      " onmouseover="this.style.background='#334155'; this.style.transform='translateY(-2px)'"
+         onmouseout="this.style.background='#1e293b'; this.style.transform='translateY(0)'">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        Enter Interactive Animation
+      </button>
+    </div>`
+      }
+    ]
   }
-
 ];
 
 let stepsData = [];
 
 // State Management
-let hasCompletedOnce = sessionStorage.getItem('lr_completed') === 'true';
+let completedSingle = sessionStorage.getItem('lr_completed_single') === 'true';
+let completedMulti = sessionStorage.getItem('lr_completed_multi') === 'true';
 
 let STATE = {
   stepIndex: 0,
   subStepIndex: 0,
-  stepsStatus: []
+  stepsStatus: [],
+  mode: null // Added to track current mode (single/multi)
 };
 
 // Initial status (will be set after selection)
@@ -993,6 +1096,7 @@ function init() {
   }
 
   function startSimulation(mode) {
+    STATE.mode = mode; // Save mode to state
     if (mode === 'single') {
       stepsData = SINGLE_VAR_STEPS;
     } else {
@@ -1097,9 +1201,22 @@ function renderSidebar() {
   downloadBtn.style.textAlign = 'center';
   downloadBtn.style.marginTop = "10px";
   
-  // Check if all steps are completed (or were completed before a restart)
-  const allCompleted = checkAllStepsCompleted() || hasCompletedOnce;
+  // Check if current mode is completed
+  const isCurrentlySingle = stepsData === SINGLE_VAR_STEPS;
+  const isCompleted = isCurrentlySingle ? completedSingle : completedMulti;
+  const allCompleted = isCompleted || checkAllStepsCompleted();
+
   if (allCompleted) {
+    if (!isCompleted) {
+       // Mark current mode as completed in session if first time
+       if (isCurrentlySingle) {
+           completedSingle = true;
+           sessionStorage.setItem('lr_completed_single', 'true');
+       } else {
+           completedMulti = true;
+           sessionStorage.setItem('lr_completed_multi', 'true');
+       }
+    }
     downloadBtn.style.backgroundColor = "#F57C2A";
     downloadBtn.style.color = "white";
     downloadBtn.style.opacity = "1";
@@ -1132,6 +1249,14 @@ function loadStep(index) {
   STATE.subStepIndex = 0; // Fix: Always reset sub-step when loading a main step
   renderSidebar();
   updateUI();
+
+  // Auto-run if it's the model simulation step
+  const step = stepsData[STATE.stepIndex];
+  if (step && step.id === 'model_simulation') {
+    setTimeout(() => {
+      runStep();
+    }, 100);
+  }
 }
 
 function updateUI() {
@@ -1241,14 +1366,10 @@ function runStep() {
           };
         }, 500);
       } else {
-        // End of Experiment - Show "Next" (Finish) Button
+        // End of Experiment
+        STATE.stepsStatus[STATE.stepIndex].completed = true;
         renderSidebar();
-        setTimeout(() => {
-          runBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
-          runBtn.style.backgroundColor = '#72b2f7ff'; // Orange
-          runBtn.disabled = false;
-          runBtn.onclick = showCompletionMessage;
-        }, 500);
+        // Since the output block now has the Congratulations HTML, No further action needed here
       }
     }
 
@@ -1384,75 +1505,50 @@ window.animateConfusionMatrix = function () {
   // No animation needed for static image, but keeping function to prevent errors if called
 };
 
-// Completion Message
-function showCompletionMessage() {
-  hasCompletedOnce = true;
-  sessionStorage.setItem('lr_completed', 'true');
-  outputContent.innerHTML = ''; // Clear output content
-  bottomPane.classList.add('active-output');
-  bottomPane.style.display = 'flex';
-  bottomPane.style.flexDirection = 'column';
-  bottomPane.style.justifyContent = 'center';
-  bottomPane.style.alignItems = 'center';
-
-  const modeName = stepsData === SINGLE_VAR_STEPS ? "Single Variable" : "Multi-Variable";
-  const msgHTML = `
-    <style>
-      @keyframes clap {
-        0%, 100% { transform: rotate(-15deg) scale(1); }
-        50% { transform: rotate(15deg) scale(1.1); }
-      }
-      .clapping-hands {
-        display: inline-block;
-        font-size: 2.5rem;
-        animation: clap 0.5s ease-in-out infinite;
-        margin: 0 5px;
-      }
-    </style>
-    <div style="text-align: center; animation: fadeIn 1s ease;">
-      <div style="margin-bottom: 20px;">
-        <span class="clapping-hands">👏</span>
-        <span class="clapping-hands" style="animation-delay: 0.15s;">👏</span>
-        <span class="clapping-hands" style="animation-delay: 0.3s;">👏</span>
-      </div>
-      <h1 style="color: #2a9d8f; font-size: 2.5rem; margin-bottom: 20px;">Congratulations!</h1>
-      <p style="font-size: 1.2rem; color: #333; max-width: 600px; margin: 0 auto;">You have successfully completed Linear Regression experiment. You now understand how Linear Regression models are used to predict continuous values and evaluate their effectiveness.</p>
-      <button onclick="openLinearRegressionAnimation()" style="
-        margin-top: 24px;
-        background: #1e293b;
-        color: white;
-        border: none;
-        padding: 16px 32px;
-        border-radius: 12px;
-        font-weight: 700;
-        font-size: 1rem;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        transition: all 0.2s;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      " onmouseover="this.style.background='#334155'; this.style.transform='translateY(-2px)'"
-         onmouseout="this.style.background='#1e293b'; this.style.transform='translateY(0)'">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-        Enter Interactive Animation
-      </button>
-      <button onclick="restartExperiment()" style="margin-top: 30px; padding: 15px 30px; background-color: #f7a072; color: white; border: none; border-radius: 10px; font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">Restart Experiment</button>
-    </div>
-  `;
-  outputContent.innerHTML = msgHTML;
-  // Hide run button or make it inactive
-  runBtn.style.display = 'none';
-}
-
 function openLinearRegressionAnimation() {
-  window.open('./animation-linear-regression/index.html', '_blank');
+  // Save state before leaving
+  sessionStorage.setItem('lr_mode', STATE.mode);
+  sessionStorage.setItem('lr_step_index', STATE.stepIndex);
+  window.location.href = './animation-linear-regression/index.html';
 }
 
-// PDF Download Logic
+// Restore state on load
+window.addEventListener('load', () => {
+    const savedMode = sessionStorage.getItem('lr_mode');
+    const savedStep = sessionStorage.getItem('lr_step_index');
+    
+    if (savedMode && savedStep !== null) {
+        // Clear them so they don't persist across fresh entries
+        sessionStorage.removeItem('lr_mode');
+        sessionStorage.removeItem('lr_step_index');
+        
+        const selectionScreen = document.getElementById('selectionScreen');
+        const mainContainer = document.getElementById('mainContainer');
+        
+        if (selectionScreen && mainContainer) {
+            STATE.mode = savedMode;
+            stepsData = (savedMode === 'single') ? SINGLE_VAR_STEPS : MULTI_VAR_STEPS;
+            
+            selectionScreen.classList.add('hidden');
+            mainContainer.classList.remove('hidden');
+            
+            // Mark all steps as unlocked and completed since we were at the end
+            STATE.stepsStatus = stepsData.map(() => ({ unlocked: true, completed: true, partial: true }));
+            
+            renderSidebar();
+            loadStep(parseInt(savedStep));
+        }
+    }
+});
+
 function downloadPDF() {
-    // Redirect to the PDF file for download
-    window.open('assets/EXP-2.pdf', '_blank');
+    // Automatically download the PDF file
+    const link = document.createElement('a');
+    link.href = 'Experiment-2_PDF.pdf';
+    link.download = 'Experiment-2_PDF.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
 
 

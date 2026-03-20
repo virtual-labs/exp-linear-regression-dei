@@ -402,3 +402,49 @@ canvas {
   flex-shrink: 0;
   margin-left: 8px; /* Added spacing */
 }
+
+/* Back Button Styles */
+.back-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  z-index: 1000;
+}
+
+.back-btn:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  transform: translateX(-4px);
+  box-shadow: 0 4px 12px rgba(106, 27, 154, 0.2);
+}
+
+.back-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.back-btn:hover svg {
+  transform: translateX(-2px);
+}
+
+@media (max-width: 600px) {
+  .back-btn span {
+    display: none;
+  }
+  .back-btn {
+    padding: 8px;
+  }
+}
