@@ -1249,14 +1249,6 @@ function loadStep(index) {
   STATE.subStepIndex = 0; // Fix: Always reset sub-step when loading a main step
   renderSidebar();
   updateUI();
-
-  // Auto-run if it's the model simulation step
-  const step = stepsData[STATE.stepIndex];
-  if (step && step.id === 'model_simulation') {
-    setTimeout(() => {
-      runStep();
-    }, 100);
-  }
 }
 
 function updateUI() {
@@ -1299,6 +1291,25 @@ function updateUI() {
 
   // ALWAYS reset onclick to standard runStep
   runBtn.onclick = runStep;
+
+  // Instant complete for Model Simulation step as requested
+  if (step.id === 'model_simulation') {
+    // Mark as completed in state
+    STATE.stepsStatus[STATE.stepIndex].completed = true;
+    
+    // Update Output Immediately
+    outputContent.innerHTML = block.output;
+    bottomPane.classList.add('active-output');
+    
+    // Update Button to Checkmark
+    runBtn.classList.add('completed');
+    runBtn.style.backgroundColor = '#A6CE63'; // Green
+    runBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+    runBtn.disabled = true;
+    
+    // Refresh sidebar to show green checkmark and activate download button
+    renderSidebar();
+  }
 }
 
 function runStep() {
