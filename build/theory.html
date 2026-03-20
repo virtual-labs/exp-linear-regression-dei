@@ -349,11 +349,11 @@
                         </div>
                     </div>
                 </div>
-          </div>          <div class="vlabs-page-content px-5 pb-4 flex-grow-1 markdown-body">
-            <div class="text-center fix-spacing">
-              <h2 id="linear-regression">Linear Regression</h2>
+          </div>            <div class="vlabs-page-content px-5 pb-4 flex-grow-1 markdown-body">
+              <div class="text-center fix-spacing">
+                <h2 id="linear-regression">Linear Regression</h2>
           
-            </div>
+              </div>
               <style>
           .formula-block {
              text-align: center;
@@ -385,33 +385,50 @@
           }
           </style>
           
-          <p>Linear Regression is one of the most fundamental and widely used algorithms in Machine Learning and Statistical Modelling. It belongs to supervised learning, where the model is trained using labelled data containing input variables (features) and the corresponding output variable (target).</p>
-          <p>The goal of Linear Regression is to identify and quantify relationships between variables so that future outcomes can be predicted. The method assumes that the relationship between dependent and independent variables can be approximated by a linear equation.</p>
-          <p>Examples include house price prediction from area and rooms, sales prediction from advertisement spend, and student performance prediction from study hours. Once the model learns from historical data, it predicts continuous numerical values for unseen inputs.</p>
+          <p>Linear Regression is one of the most fundamental and widely used algorithms in Machine 
+          Learning and Statistical Modelling. It belongs to the category of supervised learning algorithms, 
+          where the model is trained using labelled data that contains both input variables (features) and 
+          the corresponding output variable (target). </p>
+          <p>The goal of Linear Regression is to identify and quantify the relationship between variables so 
+          that future outcomes can be predicted. The algorithm assumes that the relationship between the 
+          dependent variable and independent variables can be approximated using a linear equation. </p>
+          <p>For example, linear regression can be used to model relationships such as House price 
+          prediction based on area and number of rooms, Sales prediction based on advertising 
+          expenditure, Student performance prediction based on study hours, and Once the model learns 
+          the relationship from historical data, it can be used to predict continuous numerical values for 
+          new input data.</p>
           <h3 id="1-simple-linear-regression">1. Simple Linear Regression</h3>
-          <p>Simple Linear Regression models one independent variable X and one dependent variable Y using a best-fit straight line.</p>
+          <p>Simple Linear Regression models the relationship between one independent variable (X) and 
+          one dependent variable (Y). The objective is to find the best-fitting straight line, known as the 
+          regression line, that represents the relationship between the two variables. </p>
+          <p>The regression line is determined using the equation: </p>
           <div class="formula-block">
              <span class="formula-text">
                 <i>Y</i> = <i>β</i><sub>0</sub> + <i>β</i><sub>1</sub><i>X</i> + <i>ε</i>
              </span>
           </div>
           
-          <p>This line gives the predicted value of Y for each value of X.</p>
+          <p>This line represents the predicted value of Y for a given value of X. </p>
           <div class="figure-block">
           <img src="images/fig1_lr.png" alt="Linear regression showing slope, intercept, and prediction error">
           <p class="figure-caption">Figure 1: Linear regression showing slope, intercept, and prediction error.</p>
           </div>
           
-          <p>In Figure 1, the line <i>y</i> = <i>β</i><sub>0</sub> + <i>β</i><sub>1</sub><i>x</i> is the regression line. Here, <i>β</i><sub>0</sub> is the intercept (predicted <i>Y</i> when <i>X</i> = 0) and <i>β</i><sub>1</sub> is the slope (change in <i>Y</i> for one-unit change in <i>X</i>). The vertical distance between an observed point and the predicted point on the line is the residual (error) <i>ε</i><sub>i</sub>.</p>
+          <p>As shown in Figure 1, the relationship between the independent variable <i>X</i> and the dependent variable <i>Y</i> is represented using a linear regression model. The straight line <i>y</i> = <i>β</i><sub>0</sub> + <i>β</i><sub>1</sub><i>x</i> represents the regression line, which predicts the value of <i>Y</i> for a given value of <i>X</i>. Here, <i>β</i><sub>0</sub> is the intercept, which indicates the value of <i>Y</i> when <i>X</i> = 0, and <i>β</i><sub>1</sub> represents the slope of the line, showing how much <i>Y</i> changes for a unit change in <i>X</i>. The light blue points in the graph represent the actual observed data points. For a particular value <i>X</i><sub>i</sub>, the model predicts a value of <i>Y</i> on the regression line, known as the predicted value, while the actual data point represents the observed value. The vertical distance between these two values is called the random error or residual <i>ε</i><sub>i</sub>. </p>
+          <p>This residual shows the difference between the predicted value given by the model and the actual observed value. The dashed lines in the graph help visualize the observed value, predicted value, and the slope of the regression line, illustrating how linear regression fits a line that best represents the overall trend of the data.</p>
           <h3 id="2-multiple-linear-regression">2. Multiple Linear Regression</h3>
-          <p>Multiple Linear Regression extends simple regression to two or more independent variables.</p>
+          <p>Multiple Linear Regression extends the concept of simple linear regression by considering two 
+          or more independent variables to predict the dependent variable. This allows the model to 
+          capture more complex relationships in the data where multiple factors influence the outcome. </p>
+          <p>The general equation of multiple linear regression is:</p>
           <div class="formula-block">
              <span class="formula-text">
                 <i>Y</i> = <i>β</i><sub>0</sub> + <i>β</i><sub>1</sub><i>X</i><sub>1</sub> + <i>β</i><sub>2</sub><i>X</i><sub>2</sub> + ... + <i>β</i><sub>n</sub><i>X</i><sub>n</sub> + <i>ε</i>
              </span>
           </div>
           
-          <p>Each coefficient measures the contribution of one feature while keeping others constant.</p>
+          <p>Each coefficient represents the contribution of a specific feature to the predicted value, while 
+          keeping other variables constant. </p>
           <p>Where:</p>
           <ul>
           <li>Y: Dependent variable (target)</li>
@@ -425,10 +442,14 @@
           <p class="figure-caption">Figure 2: Multiple linear regression showing the regression plane and residual error.</p>
           </div>
           
-          <p>In this case, the model fits a plane (for two features) rather than a line. The vertical distance from each observed point to the plane is the residual. The objective is to reduce these residuals to improve prediction accuracy.</p>
+          <p>As illustrated in Figure 2, Multiple Linear Regression is a statistical technique used to model the relationship between two or more independent variables and a single dependent variable by fitting a best-fit plane through a three-dimensional scatter plot of data points. The model is expressed as <i>Y</i> = <i>β</i><sub>0</sub> + <i>β</i><sub>1</sub><i>X</i><sub>1</sub> + <i>β</i><sub>2</sub><i>X</i><sub>2</sub> + <i>ε</i>, where <i>Y</i> represents the dependent variable, <i>X</i><sub>1</sub> and <i>X</i><sub>2</sub> are the predictors, <i>β</i><sub>0</sub> is the intercept, <i>β</i><sub>1</sub> and <i>β</i><sub>2</sub> are the coefficients corresponding to each predictor, and <i>ε</i> denotes the error term.</p>
+          <p>The fitted plane represents the predicted values of the dependent variable; however, the actual data points generally do not lie exactly on this plane. The vertical distance between an observed data point and the plane, indicated by the dashed line, is known as the residual or error. The objective of the model is to minimize these residuals, thereby improving prediction accuracy. This approach enables the model to quantify the contribution of each independent variable and helps in understanding how different predictors influence the outcome.</p>
           <h3 id="3-method-of-least-squares">3. Method of Least Squares</h3>
-          <p>Model parameters are estimated by minimizing prediction error using the Least Squares Method.</p>
-          <p>The error measure is Residual Sum of Squares (RSS):</p>
+          <p>The parameters of the regression model (β₀ and β₁) are estimated using the Least Squares 
+          Method. The main idea of this method is to determine the regression line that minimizes the 
+          total prediction error.</p>
+          <p>The error is measured using the Residual Sum of Squares (RSS), which is calculated as the sum 
+          of squared differences between the observed values and the predicted values.</p>
           <div class="formula-block">
              <span class="formula-text">
                 <i>RSS</i> = ∑<sub><i>i</i>=1</sub><sup><i>n</i></sup> (<i>Y</i><sub>i</sub> - <i>ŷ</i><sub>i</sub>)<sup>2</sup>
@@ -440,53 +461,86 @@
           <li>Y<sub>i</sub>: actual value</li>
           <li>ŷ<sub>i</sub>: predicted value</li>
           </ul>
-          <p>By minimizing RSS, Linear Regression finds the best-fitting line or plane.</p>
+          <p>By minimizing RSS, the algorithm finds the best possible line that fits the data points.</p>
           <div class="figure-block">
           <img src="images/fig3_lr.png" alt="Residuals as vertical distances between observed points and regression line">
           <p class="figure-caption">Figure 3: Residuals as vertical distances between observed points and the regression line.</p>
           </div>
           
-          <p>Smaller squared residual sum indicates a better fit to data.</p>
+          <p>Figure 3 illustrates the concept of residuals in linear regression. The X-axis represents the independent variable <i>x</i>, while the Y-axis represents the dependent variable <i>y</i>. The slanted line shown in the figure is the regression line, which represents the predicted relationship between <i>x</i> and <i>y</i>. The scattered colored points represent the actual observed data points. For each data point, a vertical arrow is drawn between the observed value and the regression line. This vertical distance is called the residual, which represents the difference between the actual observed value and the predicted value given by the regression model. Mathematically, the residual is expressed as <i>residual</i><sub>i</sub> = <i>sample</i><sub>i</sub> − <i>line</i><sub>i</sub>. The figure also shows the formula for the Sum of Squared Residuals (SSR), ∑(<i>residual</i><sub>k</sub>)<sup>2</sup>, which is used in linear regression to measure how well the regression line fits the data. A smaller sum of squared residuals indicates a better fit of the model to the observed data. The point labeled <i>C</i>(<i>x</i><sub>1</sub>, <i>y</i><sub>1</sub>) demonstrates a specific example where the vertical difference between the observed point and the predicted point on the regression line represents the residual.</p>
           <h3 id="4-interpretation-of-regression-coefficients">4. Interpretation of Regression Coefficients</h3>
+          <p>The coefficients in a regression model provide meaningful insights into the relationship 
+          between variables. </p>
           <ul>
-          <li><strong>Intercept (β<sub>0</sub>):</strong> Predicted value when all independent variables are zero.</li>
-          <li><strong>Slope in Simple Regression (β<sub>1</sub>):</strong> Change in target for one-unit increase in feature.</li>
-          <li><strong>Coefficients in Multiple Regression (β<sub>1</sub>, β<sub>2</sub>, ...):</strong> Strength and direction of influence of each feature.</li>
+          <li><p><strong>Intercept (β<sub>0</sub>):</strong>  Represents the value of the dependent variable when all independent 
+          variables are zero.</p>
+          </li>
+          <li><p><strong>Slope(β<sub>1</sub>):</strong> Indicates how much the dependent variable changes when the independent 
+          variable increases by one unit.</p>
+          </li>
+          <li><p><strong>Regression coefficients (β<sub>1</sub>, β<sub>2</sub>, ...):</strong> Strength and direction of influence of each feature.</p>
+          </li>
           </ul>
-          <p>If <i>β</i><sub>1</sub> = 2, then for one-unit increase in <i>X</i>, predicted <i>Y</i> increases by 2 units (all else constant).</p>
+          <p>For example, if <i>β</i><sub>1</sub> = 2, then for one-unit increase in <i>X</i>, predicted <i>Y</i> increases by 2 units (all else constant).</p>
           <h3 id="5-algorithm">5. Algorithm</h3>
-          <ol>
-          <li>Let X be input features and Y be output values.</li>
-          <li>Assume linear model:<div class="formula-block">
+          <p><strong>Step 1:</strong> Let <i>X</i> be the input features and (<i>Y</i>) be output values.</p>
+          <p><strong>Step 2:</strong> Assume a linear relationship:</p><div class="formula-block" style="text-align: left;">
              <span class="formula-text">
                 <i>y</i> = <i>β</i><sub>0</sub> + <i>β</i><sub>1</sub><i>x</i><sub>1</sub> + <i>β</i><sub>2</sub><i>x</i><sub>2</sub> + ... + <i>β</i><sub>n</sub><i>x</i><sub>n</sub>
-             </span>
+             </span><p></p>
+          </div>
+          
+          <ul>
+          <li><p><i>β</i><sub>0</sub> is the intercept (value when all <i>x</i> = 0)</p>
+          </li>
+          <li><p><i>β</i><sub>1</sub>, <i>β</i><sub>2</sub>, ... are coefficients (weights) for each feature</p>
+          </li>
+          </ul>
+          <p><strong>Step 3:</strong> Define the error (residual) for each data point:</p>
+          <ul>
+          <li><p>Error = Actual value - Predicted value</p>
+          </li>
+          <li><div class="formula-block" style="text-align: left;">
+           <span class="formula-text">
+              <i>e</i><sub>i</sub> = <i>y</i><sub>i</sub> - (<i>β</i><sub>0</sub> + <i>β</i><sub>1</sub><i>x</i><sub>1i</sub> + <i>β</i><sub>2</sub><i>x</i><sub>2i</sub> + ...)
+           </span>
           </div></li>
-          <li>Compute residual for each data point:<div class="formula-block">
-             <span class="formula-text">
-                <i>e</i><sub>i</sub> = <i>y</i><sub>i</sub> - <i>ŷ</i><sub>i</sub>
-             </span>
+          </ul>
+          <p><strong>Step 4:</strong> Calculate total error using Sum of Squared Errors (SSE):</p>
+          <ul>
+          <li><div class="formula-block" style="text-align: left;">
+           <span class="formula-text">
+              <i>SSE</i> = ∑(<i>e</i><sub>i</sub>)<sup>2</sup> = ∑(<i>y</i><sub>i</sub> - <i>ŷ</i><sub>i</sub>)<sup>2</sup>
+           </span>
           </div></li>
-          <li>Compute total error with SSE:<div class="formula-block">
-             <span class="formula-text">
-                <i>SSE</i> = ∑<sub><i>i</i>=1</sub><sup><i>n</i></sup> (<i>y</i><sub>i</sub> - <i>ŷ</i><sub>i</sub>)<sup>2</sup>
-             </span>
+          </ul>
+          <p><strong>Step 5:</strong> Find coefficients that minimize SSE using Normal Equation:</p>
+          <ul>
+          <li><div class="formula-block" style="text-align: left;">
+           <span class="formula-text">
+              <i>β</i> = (<i>X</i><sup>T</sup><i>X</i>)<sup>-1</sup><i>X</i><sup>T</sup><i>y</i>
+           </span>
           </div></li>
-          <li>Find coefficients minimizing SSE (Normal Equation):<div class="formula-block">
-             <span class="formula-text">
-                <i>β</i> = (<i>X</i><sup>T</sup><i>X</i>)<sup>-1</sup><i>X</i><sup>T</sup><i>y</i>
-             </span>
+          <li><p>Where <i>X</i> is the feature matrix and <i>Y</i> is the target vector</p>
+          </li>
+          </ul>
+          <p><strong>Step 6:</strong> For new data, predict using:</p>
+          <ul>
+          <li><div class="formula-block" style="text-align: left;">
+           <span class="formula-text">
+              <i>ŷ</i> = <i>β</i><sub>0</sub> + <i>β</i><sub>1</sub><i>x</i><sub>1</sub> + <i>β</i><sub>2</sub><i>x</i><sub>2</sub> + ... + <i>β</i><sub>n</sub><i>x</i><sub>n</sub>
+           </span>
           </div></li>
-          <li>Predict new outputs using learned coefficients.</li>
-          </ol>
+          </ul>
           <h3 id="6-assumptions-of-linear-regression">6. Assumptions of Linear Regression</h3>
           <ul>
-          <li><strong>Linearity:</strong> Relationship between independent and dependent variables is linear.</li>
-          <li><strong>Independence:</strong> Observations are independent.</li>
-          <li><strong>Homoscedasticity:</strong> Residual variance remains constant across feature values.</li>
-          <li><strong>Normality:</strong> Residuals are approximately normally distributed.</li>
+          <li><strong>Linearity:</strong> The relationship between independent and dependent variables is linear</li>
+          <li><strong>Independence:</strong> Observations are independent of each other.</li>
+          <li><strong>Homoscedasticity:</strong> Constant variance of residuals across all values of X.</li>
+          <li><strong>Normality:</strong>  Residuals are normally distributed.</li>
           </ul>
           <h3 id="7-applications-of-linear-regression">7. Applications of Linear Regression</h3>
+          <p>Linear Regression is widely used in many real-world applications, including:</p>
           <ul>
           <li>Sales forecasting</li>
           <li>Price prediction</li>
@@ -495,21 +549,29 @@
           <li>Economic trend analysis</li>
           <li>Healthcare data analysis</li>
           </ul>
-          <p>Linear Regression is commonly used as a baseline model due to its simplicity and interpretability.</p>
+          <p>Due to its simplicity and interpretability, linear regression is often used as a baseline model in 
+          many machine learning problems.</p>
           <h3 id="8-merits-of-linear-regression">8. Merits of Linear Regression</h3>
           <ul>
-          <li><strong>Simplicity and interpretability:</strong> Easy to implement and explain.</li>
-          <li><strong>Clear coefficient meaning:</strong> Coefficients give direction and magnitude of feature effects.</li>
-          <li><strong>Effective on linear data:</strong> Works well when assumptions are reasonably satisfied.</li>
+          <li><strong>Simplicity and interpretability:</strong>  Linear Regression is easy to understand and 
+          implement. Model coefficients have clear statistical meaning, indicating the magnitude 
+          and direction of feature influence on the target variable</li>
+          <li><strong>Effective for Linearly Related Data:</strong> Performs well when the true relationship 
+          between features and target is approximately linear and assumptions are reasonably 
+          satisfied.</li>
           </ul>
           <h3 id="9-demerits-of-linear-regression">9. Demerits of Linear Regression</h3>
           <ul>
-          <li><strong>Linearity restriction:</strong> Cannot model non-linear relationships without transformations.</li>
-          <li><strong>Outlier sensitivity:</strong> Squared-error objective gives large weight to outliers.</li>
-          <li><strong>Multicollinearity issues:</strong> Highly correlated predictors make coefficient estimates unstable in multiple regression.</li>
+          <li><strong>Linearity Assumption:</strong> The model cannot capture non-linear relationships unless 
+          manual feature transformations (e.g., polynomial terms) are applied.</li>
+          <li><strong>Sensitivity to Outliers:</strong> Least Squares estimation squares residuals, giving excessive 
+          weight to outliers, which can significantly distort the model.</li>
+          <li><strong>Multicollinearity issues:</strong> High correlation among independent variables leads to 
+          unstable coefficient estimates and reduced interpretability in Multiple Linear 
+          Regression.</li>
           </ul>
           
-          </div>
+            </div>
           <div class="bug-report-mobile">
               <bug-report id="bug-report" title="[BUG REPORT] LINEAR REGRESSION" page-type="text" context-info="{&quot;organisation&quot;:&quot;Virtual Labs&quot;,&quot;developer_institute&quot;:&quot;DLBG&quot;,&quot;expname&quot;:&quot;LINEAR REGRESSION&quot;,&quot;labname&quot;:&quot;Virtual Lab&quot;,&quot;phase&quot;:&quot;Testing&quot;}" checkbox-json="{&quot;text&quot;:[&quot;Insufficient Content&quot;],&quot;video&quot;:[&quot;Insufficient Content&quot;],&quot;assesment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;assessment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;simulation&quot;:[&quot;Simulation Not Working&quot;,&quot;Incorrect Results/Observations&quot;,&quot;Insufficient/Incorrect Instructions&quot;],&quot;DEFAULT&quot;:[&quot;Page Not Loading&quot;,&quot;Content Not Visible&quot;,&quot;Incorrect Content&quot;]}" position="override" button_style="
                           position: fixed; 

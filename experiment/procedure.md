@@ -1,6 +1,7 @@
-## Part 1: Simple Linear Regression
+### Part 1: Simple Linear Regression
 
-The objective of this experiment is to implement Simple Linear Regression on Salary Dataset to regress Salaries with corresponding Years of Experience.
+The Objective of this experiment is to implement Simple Linear Regression on Salary Dataset to 
+regress Salaries with corresponding Years of Experience. 
 
 **Step 1:** Load 'Salary_dataset.csv'
 
@@ -17,9 +18,7 @@ The objective of this experiment is to implement Simple Linear Regression on Sal
 - Regression line
 - Residual distribution
 
----
-
-## Part 2: Multiple Linear Regression
+### Part 2: Multiple Linear Regression
 
 The objective of this experiment is to implement Multiple Linear Regression on Car Dataset using categorical features – Fuel types (Petrol, Diesel or CNG), Seller types (Dealer or Individual) and Transmission (Manual or Automatic) – to regress on Selling Price of cars.
 
