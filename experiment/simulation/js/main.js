@@ -571,7 +571,7 @@ print("Interactive Prediction Table Loaded")`,
     blocks: [
       {
         code: `# Interactive Multiple Linear Regression Simulation
-Click the 'Enter Interactive Animation' button to open the full-screen simulator.
+Click the 'Launch Interactive Simulation' button to open the full-screen simulator.
 Explore how the regression plane fits multiple features of the car dataset in real-time.`,
         output: `
     <style>
@@ -611,7 +611,7 @@ Explore how the regression plane fits multiple features of the car dataset in re
       " onmouseover="this.style.background='#334155'; this.style.transform='translateY(-2px)'"
          onmouseout="this.style.background='#1e293b'; this.style.transform='translateY(0)'">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-        Enter Interactive Animation
+        Launch Interactive Simulation
       </button>
     </div>`
       }
@@ -1004,7 +1004,7 @@ print(best_predictions)`,
     blocks: [
       {
         code: `# Interactive Simple Linear Regression Simulation
-Click the 'Enter Interactive Animation' button to open the full-screen simulator.
+Click the 'Launch Interactive Simulation' button to open the full-screen simulator.
 Explore how the regression line fits the salary dataset in real-time.`,
         output: `
     <style>
@@ -1044,7 +1044,7 @@ Explore how the regression line fits the salary dataset in real-time.`,
       " onmouseover="this.style.background='#334155'; this.style.transform='translateY(-2px)'"
          onmouseout="this.style.background='#1e293b'; this.style.transform='translateY(0)'">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-        Enter Interactive Animation
+        Launch Interactive Simulation
       </button>
     </div>`
       }
@@ -1200,7 +1200,7 @@ function renderSidebar() {
   `;
   downloadBtn.style.textAlign = 'center';
   downloadBtn.style.marginTop = "10px";
-  
+
   // Check if current mode is completed
   const isCurrentlySingle = stepsData === SINGLE_VAR_STEPS;
   const isCompleted = isCurrentlySingle ? completedSingle : completedMulti;
@@ -1208,14 +1208,14 @@ function renderSidebar() {
 
   if (allCompleted) {
     if (!isCompleted) {
-       // Mark current mode as completed in session if first time
-       if (isCurrentlySingle) {
-           completedSingle = true;
-           sessionStorage.setItem('lr_completed_single', 'true');
-       } else {
-           completedMulti = true;
-           sessionStorage.setItem('lr_completed_multi', 'true');
-       }
+      // Mark current mode as completed in session if first time
+      if (isCurrentlySingle) {
+        completedSingle = true;
+        sessionStorage.setItem('lr_completed_single', 'true');
+      } else {
+        completedMulti = true;
+        sessionStorage.setItem('lr_completed_multi', 'true');
+      }
     }
     downloadBtn.style.backgroundColor = "#F57C2A";
     downloadBtn.style.color = "white";
@@ -1296,17 +1296,17 @@ function updateUI() {
   if (step.id === 'model_simulation') {
     // Mark as completed in state
     STATE.stepsStatus[STATE.stepIndex].completed = true;
-    
+
     // Update Output Immediately
     outputContent.innerHTML = block.output;
     bottomPane.classList.add('active-output');
-    
+
     // Update Button to Checkmark
     runBtn.classList.add('completed');
     runBtn.style.backgroundColor = '#A6CE63'; // Green
     runBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
     runBtn.disabled = true;
-    
+
     // Refresh sidebar to show green checkmark and activate download button
     renderSidebar();
   }
@@ -1405,10 +1405,10 @@ function highlightCode(code) {
   let stringChar = '';
   let i = 0;
   let currentPart = '';
-  
+
   while (i < code.length) {
     const char = code[i];
-    
+
     if (!inString && (char === '"' || char === "'")) {
       // Apply highlighting to current part before string
       result += currentPart
@@ -1431,14 +1431,14 @@ function highlightCode(code) {
     }
     i++;
   }
-  
+
   // Apply highlighting to remaining part
   result += currentPart
     .replace(/\bimport /g, '<span class="kw">import </span>')
     .replace(/\bdef /g, '<span class="kw">def </span>')
     .replace(/\breturn /g, '<span class="kw">return </span>')
     .replace(/\bprint\b/g, '<span class="func">print</span>');
-  
+
   return result;
 }
 
@@ -1525,41 +1525,41 @@ function openLinearRegressionAnimation() {
 
 // Restore state on load
 window.addEventListener('load', () => {
-    const savedMode = sessionStorage.getItem('lr_mode');
-    const savedStep = sessionStorage.getItem('lr_step_index');
-    
-    if (savedMode && savedStep !== null) {
-        // Clear them so they don't persist across fresh entries
-        sessionStorage.removeItem('lr_mode');
-        sessionStorage.removeItem('lr_step_index');
-        
-        const selectionScreen = document.getElementById('selectionScreen');
-        const mainContainer = document.getElementById('mainContainer');
-        
-        if (selectionScreen && mainContainer) {
-            STATE.mode = savedMode;
-            stepsData = (savedMode === 'single') ? SINGLE_VAR_STEPS : MULTI_VAR_STEPS;
-            
-            selectionScreen.classList.add('hidden');
-            mainContainer.classList.remove('hidden');
-            
-            // Mark all steps as unlocked and completed since we were at the end
-            STATE.stepsStatus = stepsData.map(() => ({ unlocked: true, completed: true, partial: true }));
-            
-            renderSidebar();
-            loadStep(parseInt(savedStep));
-        }
+  const savedMode = sessionStorage.getItem('lr_mode');
+  const savedStep = sessionStorage.getItem('lr_step_index');
+
+  if (savedMode && savedStep !== null) {
+    // Clear them so they don't persist across fresh entries
+    sessionStorage.removeItem('lr_mode');
+    sessionStorage.removeItem('lr_step_index');
+
+    const selectionScreen = document.getElementById('selectionScreen');
+    const mainContainer = document.getElementById('mainContainer');
+
+    if (selectionScreen && mainContainer) {
+      STATE.mode = savedMode;
+      stepsData = (savedMode === 'single') ? SINGLE_VAR_STEPS : MULTI_VAR_STEPS;
+
+      selectionScreen.classList.add('hidden');
+      mainContainer.classList.remove('hidden');
+
+      // Mark all steps as unlocked and completed since we were at the end
+      STATE.stepsStatus = stepsData.map(() => ({ unlocked: true, completed: true, partial: true }));
+
+      renderSidebar();
+      loadStep(parseInt(savedStep));
     }
+  }
 });
 
 function downloadPDF() {
-    // Automatically download the PDF file
-    const link = document.createElement('a');
-    link.href = 'Experiment-2_PDF.pdf';
-    link.download = 'Experiment-2_PDF.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  // Automatically download the PDF file
+  const link = document.createElement('a');
+  link.href = 'Experiment-2_PDF.pdf';
+  link.download = 'Experiment-2_PDF.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 
