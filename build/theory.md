@@ -86,7 +86,7 @@ The general equation of multiple linear regression is:
 Each coefficient represents the contribution of a specific feature to the predicted value, while 
 keeping other variables constant. 
 
-Where:
+where,
 - Y: Dependent variable (target)
 - X1, X2, ..., Xn: Independent variables (features)
 - &beta;<sub>0</sub>: Intercept
@@ -113,11 +113,17 @@ of squared differences between the observed values and the predicted values.
 
 <div class="formula-block">
    <span class="formula-text">
-      <i>RSS</i> = &sum;<sub><i>i</i>=1</sub><sup><i>n</i></sup> (<i>Y</i><sub>i</sub> - <i>y&#770;</i><sub>i</sub>)<sup>2</sup>
+      <i>RSS</i> = 
+      <div style="display: inline-block; vertical-align: middle; text-align: center; line-height: 1.1; margin: 0 5px;">
+         <div style="font-size: 0.75em;"><i>n</i></div>
+         <div style="font-size: 1.7em; margin: 3px 0;">&sum;</div>
+         <div style="font-size: 0.75em;"><i>i</i>=1</div>
+      </div>
+      (<i>Y</i><sub>i</sub> − <i>ŷ</i><sub>i</sub>)<sup>2</sup>
    </span>
 </div>
 
-Where:
+where,
 - Y<sub>i</sub>: actual value
 - y&#770;<sub>i</sub>: predicted value
 
@@ -172,7 +178,19 @@ For example, if <i>&beta;</i><sub>1</sub> = 2, then for one-unit increase in <i>
 
 - <div class="formula-block" style="text-align: left;">
    <span class="formula-text">
-      <i>SSE</i> = &sum;(<i>e</i><sub>i</sub>)<sup>2</sup> = &sum;(<i>y</i><sub>i</sub> - <i>ŷ</i><sub>i</sub>)<sup>2</sup>
+      <i>SSE</i> = 
+      <div style="display: inline-block; vertical-align: middle; text-align: center; line-height: 1.2; margin: 0 5px;">
+         <div style="font-size: 0.75em;"><i>n</i></div>
+         <div style="font-size: 1.7em; margin: 3px 0;">&sum;</div>
+         <div style="font-size: 0.75em;"><i>i</i>=1</div>
+      </div>
+      (<i>e</i><sub>i</sub>)<sup>2</sup> = 
+      <div style="display: inline-block; vertical-align: middle; text-align: center; line-height: 1; margin: 0 5px;">
+         <div style="font-size: 0.75em;"><i>n</i></div>
+         <div style="font-size: 1.7em; margin-top: -2px; margin-bottom: -2px;">&sum;</div>
+         <div style="font-size: 0.75em;"><i>i</i>=1</div>
+      </div>
+      (<i>y</i><sub>i</sub> − <i>ŷ</i><sub>i</sub>)<sup>2</sup>
    </span>
 </div>
 
