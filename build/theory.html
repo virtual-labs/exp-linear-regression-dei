@@ -429,7 +429,7 @@
           
           <p>Each coefficient represents the contribution of a specific feature to the predicted value, while 
           keeping other variables constant. </p>
-          <p>Where:</p>
+          <p>where,</p>
           <ul>
           <li>Y: Dependent variable (target)</li>
           <li>X1, X2, ..., Xn: Independent variables (features)</li>
@@ -452,11 +452,17 @@
           of squared differences between the observed values and the predicted values.</p>
           <div class="formula-block">
              <span class="formula-text">
-                <i>RSS</i> = ∑<sub><i>i</i>=1</sub><sup><i>n</i></sup> (<i>Y</i><sub>i</sub> - <i>ŷ</i><sub>i</sub>)<sup>2</sup>
+                <i>RSS</i> = 
+                <div style="display: inline-block; vertical-align: middle; text-align: center; line-height: 1.1; margin: 0 5px;">
+                   <div style="font-size: 0.75em;"><i>n</i></div>
+                   <div style="font-size: 1.7em; margin: 3px 0;">∑</div>
+                   <div style="font-size: 0.75em;"><i>i</i>=1</div>
+                </div>
+                (<i>Y</i><sub>i</sub> − <i>ŷ</i><sub>i</sub>)<sup>2</sup>
              </span>
           </div>
           
-          <p>Where:</p>
+          <p>where,</p>
           <ul>
           <li>Y<sub>i</sub>: actual value</li>
           <li>ŷ<sub>i</sub>: predicted value</li>
@@ -510,7 +516,19 @@
           <ul>
           <li><div class="formula-block" style="text-align: left;">
            <span class="formula-text">
-              <i>SSE</i> = ∑(<i>e</i><sub>i</sub>)<sup>2</sup> = ∑(<i>y</i><sub>i</sub> - <i>ŷ</i><sub>i</sub>)<sup>2</sup>
+              <i>SSE</i> = 
+              <div style="display: inline-block; vertical-align: middle; text-align: center; line-height: 1.2; margin: 0 5px;">
+                 <div style="font-size: 0.75em;"><i>n</i></div>
+                 <div style="font-size: 1.7em; margin: 3px 0;">∑</div>
+                 <div style="font-size: 0.75em;"><i>i</i>=1</div>
+              </div>
+              (<i>e</i><sub>i</sub>)<sup>2</sup> = 
+              <div style="display: inline-block; vertical-align: middle; text-align: center; line-height: 1; margin: 0 5px;">
+                 <div style="font-size: 0.75em;"><i>n</i></div>
+                 <div style="font-size: 1.7em; margin-top: -2px; margin-bottom: -2px;">∑</div>
+                 <div style="font-size: 0.75em;"><i>i</i>=1</div>
+              </div>
+              (<i>y</i><sub>i</sub> − <i>ŷ</i><sub>i</sub>)<sup>2</sup>
            </span>
           </div></li>
           </ul>
